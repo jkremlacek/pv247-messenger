@@ -3,7 +3,6 @@ import React from 'react';
 import { StatusPane } from './SavingStatus.styles.js';
 import { SavingSpinner } from '../shared/SavingSpinner.jsx';
 
-//TODO: saving status probably should be unified or split into each components
 export class SavingStatus extends React.PureComponent {
 
     static propTypes = {

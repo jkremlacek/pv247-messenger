@@ -8,8 +8,8 @@ export const saveItems = () =>
     (dispatch, getState) => {
         dispatch(savingStarted());
         setTimeout(() => {
-            localStorage.setItem(keys.ITEMS_ALL_IDS, JSON.stringify(getState().messageApp.messageItems.allIds.toJS()));
-            localStorage.setItem(keys.ITEMS_BY_ID, JSON.stringify(getState().messageApp.messageItems.byId.toJS()));
+            localStorage.setItem(keys.ITEMS_CHANNEL_ALL_IDS, JSON.stringify(getState().messageApp.channelItems.allIds.toJS()));
+            localStorage.setItem(keys.ITEMS_CHANNEL_BY_ID, JSON.stringify(getState().messageApp.channelItems.byId.toJS()));
 
             dispatch(savingFinished());
         }, 1000);

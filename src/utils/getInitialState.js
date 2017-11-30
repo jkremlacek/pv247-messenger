@@ -1,10 +1,15 @@
-import { getInitialItems } from './getInitialItems';
+import { getInitialChannelItems, getInitialMessageItems } from './getInitialItems';
 import { getPersistedToken } from './getPersistedToken';
 
 export const getInitialState = () => ({
     messageApp: {
-        items: {
-            ...getInitialItems()
+        messageItems: {
+            ...getInitialMessageItems()
+        }
+    },
+    channelApp: {
+        channelItems: {
+            ...getInitialChannelItems()
         }
     },
     shared: {

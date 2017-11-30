@@ -12,7 +12,7 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 class ChannelList extends React.PureComponent {
     static propTypes = {
         list: PropTypes.instanceOf(Immutable.List).isRequired,
-        editedItemId: PropTypes.string,
+        editedChannelItemId: PropTypes.string,
         createNewFormVisible: PropTypes.bool,
         isDragging: PropTypes.bool,
         onCreateNewClick: PropTypes.func.isRequired,
@@ -20,7 +20,7 @@ class ChannelList extends React.PureComponent {
 
     render() {
         let itemElements = this.props.list.map(item =>
-            item.id === this.props.editedItemId ? (
+            item.id === this.props.editedChannelItemId ? (
                 <CSSTransition key={`edited-${item.id}`}
                     timeout={{
                         enter: 250,

@@ -5,7 +5,7 @@ import {
     MESSAGE_LIST_ITEM_UPDATE
 } from '../../constants/actionTypes';
 
-export const editedItemId = (prevState = null, action) => {
+export const editedMessageItemId = (prevState = null, action) => {
     switch(action.type) {
         case MESSAGE_LIST_ITEM_START_EDITING:
             return action.payload.id;

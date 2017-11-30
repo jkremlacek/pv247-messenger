@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 import { ChannelList } from '../../components/channel-list/ChannelList.jsx';
 import { openCreateNewForm } from '../../actions/channel-list/actionCreators';
 
-const getListOfItems = (items) => items.allIds.map(id => items.byId.get(id)).toList();
+const getListOfItems = (channelItems) => channelItems.allIds.map(id => channelItems.byId.get(id)).toList();
 const getListOfItemsMemoized = memoizee(getListOfItems);
 
-//TODO: items must be mapped as channel items not universal items
 const mapStateToProps = (state) => ({
-    list: getListOfItemsMemoized(state.messageApp.items),
-    editedItemId: state.messageApp.editedItemId,
-    createNewFormVisible: state.messageApp.isCreateNewFormOpen,
+    list: getListOfItemsMemoized(state.channelApp.channelItems),
+    editedChannelItemId: state.channelApp.editedChannelItemId,
+    createNewFormVisible: state.channelApp.isCreateNewFormOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({

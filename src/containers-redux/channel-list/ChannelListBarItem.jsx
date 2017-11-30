@@ -10,8 +10,8 @@ import {
 
 const mapStateToProps = (state) => ({
     //TODO: dragging for channels
-    expandDisabled: !!state.editedItemId || state.isDragging,
-    reorderDisabled: !!state.editedItemId ||  state.isDragging,
+    expandDisabled: !!state.editedChannelItemId || state.isDragging,
+    reorderDisabled: !!state.editedChannelItemId ||  state.isDragging,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

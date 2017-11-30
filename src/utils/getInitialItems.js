@@ -20,9 +20,19 @@ const secondItem = {
 const allIds = Immutable.List([firstId, secondId]);
 const byId = Immutable.Map([[firstId, firstItem], [secondId, secondItem]]);
 
-export const getInitialItems = () => {
-    const storedMapJSON = localStorage.getItem(keys.ITEMS_BY_ID);
-    const storedListJSON = localStorage.getItem(keys.ITEMS_ALL_IDS);
+export const getInitialMessageItems = () => {
+    const storedMapJSON = localStorage.getItem(keys.ITEMS_MESSAGE_BY_ID);
+    const storedListJSON = localStorage.getItem(keys.ITEMS_MESSAGE_ALL_IDS);
+
+    return {
+        allIds: storedListJSON ? Immutable.List(JSON.parse(storedListJSON)) : allIds,
+        byId: storedMapJSON ? Immutable.Map(JSON.parse(storedMapJSON)) : byId,
+    };
+};
+
+export const getInitialChannelItems = () => {
+    const storedMapJSON = localStorage.getItem(keys.ITEMS_CHANNEL_BY_ID);
+    const storedListJSON = localStorage.getItem(keys.ITEMS_CHANNEL_ALL_IDS);
 
     return {
         allIds: storedListJSON ? Immutable.List(JSON.parse(storedListJSON)) : allIds,

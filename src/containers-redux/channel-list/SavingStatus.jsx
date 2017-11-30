@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import { SavingStatus } from '../../components/message-list/SavingStatus.jsx';
-import { saveItems } from '../../actions/message-list/saveItems';
+import { SavingStatus } from '../../components/channel-list/SavingStatus.jsx';
+import { saveItems } from '../../actions/channel-list/saveItems';
 
 const mapStateToProps = (state) => ({
-    watchedEntity: state.messageApp.messageItems,
-    isSaving: state.messageApp.isSaving,
+    watchedEntity: state.channelApp.channelItems,
+    isSaving: state.channelApp.isSaving,
 });
 
 const mapDispatchToProps = (dispatch) => ({
