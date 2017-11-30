@@ -3,9 +3,9 @@ import {
     DragSource,
     DropTarget
 } from 'react-dnd';
-import { MessageListBarItem as MessageListBarItemComponent } from '../../components/message-list/MessageListBarItem.jsx';
+import { ChannelListBarItem as ChannelListBarItemComponent } from '../../components/channel-list/ChannelListBarItem.jsx';
 
-const messageItemDragSourceSpecs = {
+const channelItemDragSourceSpecs = {
     beginDrag(props) {
         props.onDragStarted();
         return { draggedItemId: props.item.id };
@@ -27,7 +27,7 @@ function collectDragSourceProps(connect) {
     };
 }
 
-const messageItemDropTargetSpecs = {
+const channelItemDropTargetSpecs = {
     hover(props, monitor) {
         const draggedItemId = monitor.getItem().draggedItemId;
         const hoveredItemId = props.item.id;
@@ -44,10 +44,10 @@ function collectDropTargetProps(connect) {
     };
 }
 
-const DndMessageListBarItem = DragSource('MessageItem', messageItemDragSourceSpecs, collectDragSourceProps)(
-    DropTarget('MessageItem', messageItemDropTargetSpecs, collectDropTargetProps)(MessageListBarItemComponent));
+const DndChannelListBarItem = DragSource('ChannelItem', channelItemDragSourceSpecs, collectDragSourceProps)(
+    DropTarget('ChannelItem', channelItemDropTargetSpecs, collectDropTargetProps)(ChannelListBarItemComponent));
 
-DndMessageListBarItem.propTypes = {
+DndChannelListBarItem.propTypes = {
     item: PropTypes.shape({
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
@@ -62,4 +62,4 @@ DndMessageListBarItem.propTypes = {
     onDragEnded: PropTypes.func.isRequired
 };
 
-export { DndMessageListBarItem as MessageListBarItem };
+export { DndChannelListBarItem as ChannelListBarItem };

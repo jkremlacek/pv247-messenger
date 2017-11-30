@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Ctx from '../../components/htmlcontext/backend';
 import Immutable from 'immutable';
-import { MessageListEditedItem } from '../../containers-redux/message-list/MessageListEditedItem.jsx';
-import { MessageListBarItem } from '../../containers-redux/message-list/MessageListBarItem.jsx';
-import { MessageListNewItem } from '../../containers-redux/message-list/MessageListNewItem.jsx';
-import { ButtonRow } from './MessageList.styles';
+import { ChannelListEditedItem } from '../../containers-redux/channel-list/ChannelListEditedItem.jsx';
+import { ChannelListBarItem } from '../../containers-redux/channel-list/ChannelListBarItem.jsx';
+import { ChannelListNewItem } from '../../containers-redux/channel-list/ChannelListNewItem.jsx';
+import { ButtonRow } from './ChannelList.styles';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import CSSTransition from 'react-transition-group/CSSTransition';
 
-class MessageList extends React.PureComponent {
+class ChannelList extends React.PureComponent {
     static propTypes = {
         list: PropTypes.instanceOf(Immutable.List).isRequired,
         editedItemId: PropTypes.string,
@@ -27,7 +27,7 @@ class MessageList extends React.PureComponent {
                         exit: 150
                     }}
                     classNames="edited-item">
-                    <MessageListEditedItem key={item.id} item={item} submitButtonText="Save" />
+                    <ChannelListEditedItem key={item.id} item={item} submitButtonText="Save" />
                 </CSSTransition>
             ) : (
                 <CSSTransition key={`bar-${item.id}`}
@@ -36,7 +36,7 @@ class MessageList extends React.PureComponent {
                         exit: 0
                     }}
                     classNames="bar-item">
-                    <MessageListBarItem key={item.id} item={item} />
+                    <ChannelListBarItem key={item.id} item={item} />
                 </CSSTransition>
             )
         );
@@ -49,7 +49,7 @@ class MessageList extends React.PureComponent {
                         exit: 150
                     }}
                     classNames="new-item">
-                    <MessageListNewItem />
+                    <ChannelListNewItem />
                 </CSSTransition>
             ));
         }
@@ -80,6 +80,7 @@ class MessageList extends React.PureComponent {
     }
 }
 
-const DndTodoList = Ctx(MessageList);
+//TODO: fix
+const DndTodoList = Ctx(ChannelList);
 
-export { DndTodoList as MessageList };
+export { DndTodoList as ChannelList };
