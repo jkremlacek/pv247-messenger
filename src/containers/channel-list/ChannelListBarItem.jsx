@@ -42,16 +42,11 @@ const DndChannelListBarItem = DragSource('ChannelItem', channelItemDragSourceSpe
 DndChannelListBarItem.propTypes = {
     item: PropTypes.shape({
         id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        description: PropTypes.string
+        title: PropTypes.string.isRequired
     }).isRequired,
     expandDisabled: PropTypes.bool,
-    reorderDisabled: PropTypes.bool,
     onDelete: PropTypes.func.isRequired,
     onExpand: PropTypes.func.isRequired,
-    onReorder: PropTypes.func.isRequired,
-    onDragStarted: PropTypes.func.isRequired,
-    onDragEnded: PropTypes.func.isRequired
 };
 
 export { DndChannelListBarItem as ChannelListBarItem };
