@@ -52,6 +52,6 @@
     "build": "webpack",
     "build-production": "set NODE_ENV=production&& webpack",
     "start": "webpack && start build/app.html & webpack -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No test specified yet\" && exit 0"
   }
 }
