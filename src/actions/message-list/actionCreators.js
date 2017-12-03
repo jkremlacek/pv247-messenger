@@ -8,7 +8,7 @@ export const createNewItem = (newItem) => ({
             ...newItem,
             // note that we have an explicit dependency and will refactor this
             // to use dependency injection in following commits
-            id: uuid(),
+            id: uuid()
         },
     }
 });
@@ -24,14 +24,6 @@ export const deleteItem = (id) => ({
     type: actionTypes.MESSAGE_LIST_ITEM_DELETE,
     payload: {
         id,
-    }
-});
-
-export const moveItem = (moveItemId, destinationItemId) => ({
-    type: actionTypes.MESSAGE_LIST_ITEM_MOVE,
-    payload: {
-        moveItemId,
-        destinationItemId,
     }
 });
 

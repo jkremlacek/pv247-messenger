@@ -15,9 +15,9 @@ const ContentLayout = () => (
             <div className="col-sx-12 col-md-9 col-lg-10">
                 <div className="row">
                     <div className="col-xs-10 col-md-10">
-                        <h1>TODO List</h1>
+                        <h1>Messenger App</h1>
                     </div>
-                    <div className="col-xs-2 col-md-1 text-right h6">
+                    <div className="col-xs-2 col-md-2 text-right h6">
                         <LogoutButton />
                     </div>
                 </div>
