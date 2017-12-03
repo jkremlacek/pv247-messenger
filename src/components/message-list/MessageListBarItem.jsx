@@ -42,7 +42,7 @@ MessageListBarItem.propTypes = {
     item: PropTypes.shape({
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
-        description: PropTypes.string
+        channelId: PropTypes.string.isRequired
     }).isRequired,
     onDelete: PropTypes.func.isRequired,
 };
