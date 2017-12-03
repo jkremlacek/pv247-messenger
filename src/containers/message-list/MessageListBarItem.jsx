@@ -57,9 +57,7 @@ DndMessageListBarItem.propTypes = {
     reorderDisabled: PropTypes.bool,
     onDelete: PropTypes.func.isRequired,
     onExpand: PropTypes.func.isRequired,
-    onReorder: PropTypes.func.isRequired,
-    onDragStarted: PropTypes.func.isRequired,
-    onDragEnded: PropTypes.func.isRequired
+    onReorder: PropTypes.func.isRequired
 };
 
 export { DndMessageListBarItem as MessageListBarItem };

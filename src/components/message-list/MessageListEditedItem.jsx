@@ -13,7 +13,6 @@ export class MessageListEditedItem extends React.PureComponent {
         submitDisabled: PropTypes.bool,
         submitButtonText: PropTypes.string.isRequired,
         onTitleChange: PropTypes.func.isRequired,
-        onDescriptionChange: PropTypes.func.isRequired,
         onCancel: PropTypes.func.isRequired,
         onSubmit: PropTypes.func.isRequired
     };
@@ -37,7 +36,7 @@ export class MessageListEditedItem extends React.PureComponent {
                 <FormPane>
                     <form onSubmit={(e) => e.preventDefault()}>
                         <div className="form-group">
-                            <label htmlFor="title">Title</label>
+                            <label htmlFor="title">Message</label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -45,16 +44,6 @@ export class MessageListEditedItem extends React.PureComponent {
                                 value={this.props.item.title}
                                 onChange={this.props.onTitleChange}
                                 ref={(input) => { this.titleInput = input; }}
-                                onKeyDown={this._handleEscKey}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="description">Description</label>
-                            <textarea className="form-control"
-                                rows="3"
-                                id="description"
-                                value={this.props.item.description}
-                                onChange={this.props.onDescriptionChange}
                                 onKeyDown={this._handleEscKey}
                             />
                         </div>
@@ -66,13 +55,6 @@ export class MessageListEditedItem extends React.PureComponent {
                                 onClick={this.props.onSubmit}
                             >
                                 {this.props.submitButtonText}
-                            </button>
-                            <button
-                                type="button"
-                                className="btn btn-default btn-sm"
-                                onClick={this.props.onCancel}
-                            >
-                                Cancel
                             </button>
                         </ButtonRow>
                     </form>

@@ -54,14 +54,6 @@ export const closeCreateNewForm = () => ({
     type: actionTypes.MESSAGE_LIST_CLOSE_CREATE_NEW_FORM,
 });
 
-export const startDragging = () => ({
-    type: actionTypes.MESSAGE_LIST_ITEM_START_DRAGGING,
-});
-
-export const stopDragging = () => ({
-    type: actionTypes.MESSAGE_LIST_ITEM_STOP_DRAGGING,
-});
-
 export const savingStarted = () => ({
     type: actionTypes.MESSAGE_LIST_SAVING_STARTED,
 });

@@ -9,7 +9,6 @@ import {
 } from '../../actions/channel-list/actionCreators';
 
 const mapStateToProps = (state) => ({
-    //TODO: dragging for channels
     expandDisabled: !!state.editedChannelItemId || state.isDragging,
     reorderDisabled: !!state.editedChannelItemId ||  state.isDragging,
 });

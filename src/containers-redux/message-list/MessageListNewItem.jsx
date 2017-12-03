@@ -7,11 +7,10 @@ import {
 } from '../../actions/message-list/actionCreators';
 
 const mapStateToProps = () => ({
-    submitButtonText: 'Create',
+    submitButtonText: 'Send',
     item: {
         id: uuid(),
-        title: '',
-        description: ''
+        title: ''
     }
 });
 

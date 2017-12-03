@@ -9,8 +9,8 @@ import {
 } from '../../actions/message-list/actionCreators';
 
 const mapStateToProps = (state) => ({
-    expandDisabled: !!state.editedMessageItemId || state.isDragging,
-    reorderDisabled: !!state.editedMessageItemId ||  state.isDragging,
+    expandDisabled: !!state.editedMessageItemId,
+    reorderDisabled: !!state.editedMessageItemId,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

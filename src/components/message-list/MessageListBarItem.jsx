@@ -5,9 +5,7 @@ import {
     TitlePane,
     Title,
     ActionPane,
-    Action,
-    DangerAction,
-    GrabAction
+    DangerAction
 } from './MessageListBarItem.styles';
 import { ItemPane} from './MessageListItem.styles';
 
@@ -26,30 +24,16 @@ ConnectDnd.prototypes = {
 function MessageListBarItem(props) {
     return (
         <ItemPane>
-            <ConnectDnd connectFunc={props.connectDropTarget}>
-                <ConnectDnd connectFunc={props.connectDragPreview}>
-                    <ItemBar disabled={props.expandDisabled}>
-                        <ActionPane>
-                            <ConnectDnd connectFunc={props.connectDragSource}>
-                                <GrabAction disabled={props.reorderDisabled}>
-                                    <i className="glyphicon" aria-hidden="true" />
-                                </GrabAction>
-                            </ConnectDnd>
-                            <Action disabled={props.expandDisabled} onClick={props.expandDisabled ? null : props.onExpand}>
-                                <i className="glyphicon glyphicon-menu-down" aria-hidden="true" />
-                            </Action>
-                        </ActionPane>
-                        <TitlePane disabled={props.expandDisabled} onClick={props.expandDisabled ? null : props.onExpand}>
-                            <Title>{props.item.title}</Title>
-                        </TitlePane>
-                        <ActionPane>
-                            <DangerAction onClick={() => props.onDelete()}>
-                                <i className="glyphicon glyphicon-remove" aria-hidden="true" />
-                            </DangerAction>
-                        </ActionPane>
-                    </ItemBar>
-                </ConnectDnd>
-            </ConnectDnd>
+            <ItemBar>
+                <TitlePane>
+                    <Title>{props.item.title}</Title>
+                </TitlePane>
+                <ActionPane>
+                    <DangerAction onClick={() => props.onDelete()}>
+                        <i className="glyphicon glyphicon-remove" aria-hidden="true" />
+                    </DangerAction>
+                </ActionPane>
+            </ItemBar>
         </ItemPane>
     );
 }
@@ -60,16 +44,7 @@ MessageListBarItem.propTypes = {
         title: PropTypes.string.isRequired,
         description: PropTypes.string
     }).isRequired,
-    expandDisabled: PropTypes.bool,
-    reorderDisabled: PropTypes.bool,
     onDelete: PropTypes.func.isRequired,
-    onExpand: PropTypes.func.isRequired,
-    onReorder: PropTypes.func.isRequired,
-
-    //React-dnd props
-    connectDragSource: PropTypes.func.isRequired,
-    connectDragPreview: PropTypes.func.isRequired,
-    connectDropTarget: PropTypes.func.isRequired,
 };
 
 export { MessageListBarItem };
