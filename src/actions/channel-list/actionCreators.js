@@ -27,11 +27,10 @@ export const deleteItem = (id) => ({
     }
 });
 
-export const moveItem = (moveItemId, destinationItemId) => ({
-    type: actionTypes.CHANNEL_LIST_ITEM_MOVE,
+export const selectItem = (id) => ({
+    type: actionTypes.CHANNEL_LIST_ITEM_SELECT,
     payload: {
-        moveItemId,
-        destinationItemId,
+        id,
     }
 });
 
@@ -52,14 +51,6 @@ export const openCreateNewForm = () => ({
 
 export const closeCreateNewForm = () => ({
     type: actionTypes.CHANNEL_LIST_CLOSE_CREATE_NEW_FORM,
-});
-
-export const startDragging = () => ({
-    type: actionTypes.CHANNEL_LIST_ITEM_START_DRAGGING,
-});
-
-export const stopDragging = () => ({
-    type: actionTypes.CHANNEL_LIST_ITEM_STOP_DRAGGING,
 });
 
 export const savingStarted = () => ({

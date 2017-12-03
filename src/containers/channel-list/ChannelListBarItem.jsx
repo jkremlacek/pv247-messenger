@@ -28,14 +28,6 @@ function collectDragSourceProps(connect) {
 }
 
 const channelItemDropTargetSpecs = {
-    hover(props, monitor) {
-        const draggedItemId = monitor.getItem().draggedItemId;
-        const hoveredItemId = props.item.id;
-
-        if (draggedItemId !== hoveredItemId) {
-            props.onReorder(draggedItemId, hoveredItemId);
-        }
-    }
 };
 
 function collectDropTargetProps(connect) {

@@ -2,23 +2,16 @@ import { connect } from 'react-redux';
 import { MessageListBarItem } from '../../containers/message-list/MessageListBarItem.jsx';
 import {
     deleteItem,
-    moveItem,
-    startEditingItem,
-    startDragging,
-    stopDragging
+    startEditingItem
 } from '../../actions/message-list/actionCreators';
 
 const mapStateToProps = (state) => ({
-    expandDisabled: !!state.editedMessageItemId,
-    reorderDisabled: !!state.editedMessageItemId,
+    expandDisabled: !! state.editedMessageItemId
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     onDelete: () => dispatch(deleteItem(ownProps.item.id)),
-    onExpand: () => dispatch(startEditingItem(ownProps.item.id)),
-    onReorder: (moveItemId, destinationItemId) => dispatch(moveItem(moveItemId, destinationItemId)),
-    onDragStarted: () => dispatch(startDragging()),
-    onDragEnded: () => dispatch(stopDragging())
+    onExpand: () => dispatch(startEditingItem(ownProps.item.id))
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);

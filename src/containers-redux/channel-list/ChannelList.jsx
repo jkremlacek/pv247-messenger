@@ -9,6 +9,7 @@ const getListOfItemsMemoized = memoizee(getListOfItems);
 const mapStateToProps = (state) => ({
     list: getListOfItemsMemoized(state.channelApp.channelItems),
     editedChannelItemId: state.channelApp.editedChannelItemId,
+    selectedChannelItemId: state.channelApp.selectedChannelItemId,
     createNewFormVisible: state.channelApp.isCreateNewFormOpen,
 });
 

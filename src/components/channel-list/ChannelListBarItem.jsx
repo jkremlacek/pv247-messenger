@@ -6,8 +6,7 @@ import {
     Title,
     ActionPane,
     Action,
-    DangerAction,
-    GrabAction
+    DangerAction
 } from './ChannelListBarItem.styles';
 import { ItemPane} from './ChannelListItem.styles';
 
@@ -26,30 +25,24 @@ ConnectDnd.prototypes = {
 function ChannelListBarItem(props) {
     return (
         <ItemPane>
-            <ConnectDnd connectFunc={props.connectDropTarget}>
-                <ConnectDnd connectFunc={props.connectDragPreview}>
-                    <ItemBar disabled={props.expandDisabled}>
-                        <ActionPane>
-                            <ConnectDnd connectFunc={props.connectDragSource}>
-                                <GrabAction disabled={props.reorderDisabled}>
-                                    <i className="glyphicon" aria-hidden="true" />
-                                </GrabAction>
-                            </ConnectDnd>
-                            <Action disabled={props.expandDisabled} onClick={props.expandDisabled ? null : props.onExpand}>
-                                <i className="glyphicon glyphicon-menu-down" aria-hidden="true" />
-                            </Action>
-                        </ActionPane>
-                        <TitlePane disabled={props.expandDisabled} onClick={props.expandDisabled ? null : props.onExpand}>
-                            <Title>{props.item.title}</Title>
-                        </TitlePane>
-                        <ActionPane>
-                            <DangerAction onClick={() => props.onDelete()}>
-                                <i className="glyphicon glyphicon-remove" aria-hidden="true" />
-                            </DangerAction>
-                        </ActionPane>
-                    </ItemBar>
-                </ConnectDnd>
-            </ConnectDnd>
+            <ItemBar disabled={props.expandDisabled} selected={props.isSelected}>
+                <ActionPane>
+                    <Action onClick={props.onPick}>
+                        <i className="glyphicon glyphicon-menu-right" aria-hidden="true" />
+                    </Action>
+                    <Action disabled={props.expandDisabled} onClick={props.expandDisabled ? null : props.onExpand}>
+                        <i className="glyphicon glyphicon-menu-down" aria-hidden="true" />
+                    </Action>
+                </ActionPane>
+                <TitlePane disabled={props.expandDisabled} onClick={props.expandDisabled ? null : props.onExpand}>
+                    <Title>{props.item.title}</Title>
+                </TitlePane>
+                <ActionPane>
+                    <DangerAction onClick={() => props.onDelete()}>
+                        <i className="glyphicon glyphicon-remove" aria-hidden="true" />
+                    </DangerAction>
+                </ActionPane>
+            </ItemBar>
         </ItemPane>
     );
 }
@@ -57,19 +50,14 @@ function ChannelListBarItem(props) {
 ChannelListBarItem.propTypes = {
     item: PropTypes.shape({
         id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        description: PropTypes.string
+        title: PropTypes.string.isRequired
     }).isRequired,
+    isSelected: PropTypes.bool,
     expandDisabled: PropTypes.bool,
     reorderDisabled: PropTypes.bool,
     onDelete: PropTypes.func.isRequired,
     onExpand: PropTypes.func.isRequired,
-    onReorder: PropTypes.func.isRequired,
-
-    //React-dnd props
-    connectDragSource: PropTypes.func.isRequired,
-    connectDragPreview: PropTypes.func.isRequired,
-    connectDropTarget: PropTypes.func.isRequired,
+    onPick: PropTypes.func.isRequired
 };
 
 export { ChannelListBarItem };

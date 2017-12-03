@@ -12,6 +12,7 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 class ChannelList extends React.PureComponent {
     static propTypes = {
         list: PropTypes.instanceOf(Immutable.List).isRequired,
+        selectedChannelItemId: PropTypes.string,
         editedChannelItemId: PropTypes.string,
         createNewFormVisible: PropTypes.bool,
         isDragging: PropTypes.bool,
@@ -28,6 +29,15 @@ class ChannelList extends React.PureComponent {
                     }}
                     classNames="edited-item">
                     <ChannelListEditedItem key={item.id} item={item} submitButtonText="Save" />
+                </CSSTransition>
+            ) : item.id === this.props.selectedChannelItemId ? (
+                <CSSTransition key={`bar-${item.id}`}
+                    timeout={{
+                        enter: 150,
+                        exit: 0
+                    }}
+                    classNames="bar-item">
+                    <ChannelListBarItem key={item.id} item={item} isSelected={true}/>
                 </CSSTransition>
             ) : (
                 <CSSTransition key={`bar-${item.id}`}
@@ -80,7 +90,6 @@ class ChannelList extends React.PureComponent {
     }
 }
 
-//TODO: fix
 const DndTodoList = Ctx(ChannelList);
 
 export { DndTodoList as ChannelList };

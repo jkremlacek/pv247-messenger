@@ -2,23 +2,18 @@ import { connect } from 'react-redux';
 import { ChannelListBarItem } from '../../containers/channel-list/ChannelListBarItem.jsx';
 import {
     deleteItem,
-    moveItem,
-    startEditingItem,
-    startDragging,
-    stopDragging
+    selectItem,
+    startEditingItem
 } from '../../actions/channel-list/actionCreators';
 
 const mapStateToProps = (state) => ({
-    expandDisabled: !!state.editedChannelItemId || state.isDragging,
-    reorderDisabled: !!state.editedChannelItemId ||  state.isDragging,
+    expandDisabled: !!state.editedChannelItemId
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     onDelete: () => dispatch(deleteItem(ownProps.item.id)),
     onExpand: () => dispatch(startEditingItem(ownProps.item.id)),
-    onReorder: (moveItemId, destinationItemId) => dispatch(moveItem(moveItemId, destinationItemId)),
-    onDragStarted: () => dispatch(startDragging()),
-    onDragEnded: () => dispatch(stopDragging())
+    onPick: () => dispatch(selectItem(ownProps.item.id))
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);

@@ -23,8 +23,8 @@ ConnectDnd.prototypes = {
 
 function MessageListBarItem(props) {
     return (
-        <ItemPane>
-            <ItemBar>
+        <ItemPane disabled="true">
+            <ItemBar disabled="true">
                 <TitlePane>
                     <Title>{props.item.title}</Title>
                 </TitlePane>

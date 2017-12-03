@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const ItemBar = styled.div`
     display: flex;
+    background-color: ${props => props.selected ? '#c0ea96' : 'inherit'};
     
     &:hover {
-        background-color: ${props => props.disabled ? 'inherit' : '#f5f5f5'};
+        background-color: ${props => props.disabled ? 'inherit' : props.selected ? '#a8d67c' : '#f5f5f5'};
     }
 `;
 
@@ -50,7 +51,7 @@ export const DangerAction = Action.extend`
 `;
 
 export const GrabAction = Action.extend`
-    cursor: ${props => props.disabled ? 'not-allowed' : 'grab'};
+    cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
     
     & > i {
         left: -0.33em;
