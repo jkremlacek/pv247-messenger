@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
     item: {
         id: uuid(),
         messsageText: '',
+        ownerId: ownProps.ownerId,
         channelId: ownProps.channelId
     }
 });

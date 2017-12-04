@@ -7,7 +7,8 @@ export class MessageListEditedItem extends React.PureComponent {
         item: PropTypes.shape({
             id: PropTypes.string.isRequired,
             messsageText: PropTypes.string.isRequired,
-            channelId: PropTypes.string.isRequired
+            channelId: PropTypes.string.isRequired,
+            ownerId: PropTypes.string.isRequired
         }).isRequired,
         submitButtonText: PropTypes.string.isRequired,
         onCancel: PropTypes.func.isRequired,

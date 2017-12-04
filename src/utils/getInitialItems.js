@@ -35,19 +35,22 @@ const thirdMessageId = uuid;
 const firstMessageItem = {
     id: firstMessageId,
     messsageText: 'this is first channel, first message',
-    channelId: firstId
+    channelId: firstId,
+    ownerId: 'undefined@null.zero'
 };
 
 const secondMessageItem = {
     id: secondMessageId,
     messsageText: 'this is first channel, second message',
-    channelId: firstId
+    channelId: firstId,
+    ownerId: 'dad@family.com'
 };
 
 const thirdMessageItem = {
     id: thirdMessageId,
     messsageText: 'this is second channel, first message',
-    channelId: secondId
+    channelId: secondId,
+    ownerId: 'undefined@null.zero'
 };
 
 const allMessageIds = Immutable.List([firstMessageId, secondMessageId, thirdMessageId]);

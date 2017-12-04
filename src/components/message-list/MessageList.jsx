@@ -14,6 +14,7 @@ class MessageList extends React.PureComponent {
         editedMessageItemId: PropTypes.string,
         isDragging: PropTypes.bool,
         onCreateNewClick: PropTypes.func.isRequired,
+        ownerId: PropTypes.string
     };
 
     render() {
@@ -37,7 +38,7 @@ class MessageList extends React.PureComponent {
                     exit: 150
                 }}
                 classNames="new-item">
-                <MessageListNewItem channelId={this.props.selectedChannelItemId} />
+                <MessageListNewItem channelId={this.props.selectedChannelItemId} ownerId={this.props.ownerId}/>
             </CSSTransition>
         ));
 
