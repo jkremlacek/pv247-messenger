@@ -7,12 +7,14 @@ const secondId = uuid();
 
 const firstItem = {
     id: firstId,
-    title: 'Family channel'
+    title: 'Family channel',
+    ownerId: 'dad@family.com'
 };
 
 const secondItem = {
     id: secondId,
-    title: 'Public channel'
+    title: 'Public channel',
+    ownerId: 'undefined@null.zero'
 };
 
 const allIds = Immutable.List([firstId, secondId]);

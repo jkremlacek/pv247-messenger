@@ -10,7 +10,8 @@ const mapStateToProps = (state) => ({
     list: getListOfItemsMemoized(state.channelApp.channelItems),
     editedChannelItemId: state.channelApp.editedChannelItemId,
     selectedChannelItemId: state.channelApp.selectedChannelItemId,
-    createNewFormVisible: state.channelApp.isCreateNewFormOpen
+    createNewFormVisible: state.channelApp.isCreateNewFormOpen,
+    ownerId: state.profile.details.email
 });
 
 const mapDispatchToProps = (dispatch) => ({

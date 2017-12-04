@@ -6,12 +6,12 @@ import {
     closeCreateNewForm,
 } from '../../actions/channel-list/actionCreators';
 
-const mapStateToProps = () => ({
+const mapStateToProps = (state, ownProps) => ({
     submitButtonText: 'Create',
     item: {
         id: uuid(),
         title: '',
-        description: ''
+        ownerId: ownProps.ownerId
     }
 });
 

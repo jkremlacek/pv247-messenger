@@ -42,7 +42,8 @@ const DndChannelListBarItem = DragSource('ChannelItem', channelItemDragSourceSpe
 DndChannelListBarItem.propTypes = {
     item: PropTypes.shape({
         id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired
+        title: PropTypes.string.isRequired,
+        ownerId: PropTypes.string.isRequired
     }).isRequired,
     expandDisabled: PropTypes.bool,
     onDelete: PropTypes.func.isRequired,

@@ -15,8 +15,8 @@ class ChannelList extends React.PureComponent {
         selectedChannelItemId: PropTypes.string,
         editedChannelItemId: PropTypes.string,
         createNewFormVisible: PropTypes.bool,
-        isDragging: PropTypes.bool,
         onCreateNewClick: PropTypes.func.isRequired,
+        ownerId: PropTypes.string
     };
 
     render() {
@@ -59,7 +59,7 @@ class ChannelList extends React.PureComponent {
                         exit: 150
                     }}
                     classNames="new-item">
-                    <ChannelListNewItem />
+                    <ChannelListNewItem ownerId={this.props.ownerId}/>
                 </CSSTransition>
             ));
         }

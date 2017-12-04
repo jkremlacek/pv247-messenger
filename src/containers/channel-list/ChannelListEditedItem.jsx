@@ -7,7 +7,7 @@ export class ChannelListEditedItem extends React.PureComponent {
         item: PropTypes.shape({
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
-            description: PropTypes.string
+            ownerId: PropTypes.string.isRequired
         }).isRequired,
         submitButtonText: PropTypes.string.isRequired,
         onCancel: PropTypes.func.isRequired,

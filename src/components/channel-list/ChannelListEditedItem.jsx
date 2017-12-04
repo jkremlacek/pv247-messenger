@@ -7,7 +7,8 @@ export class ChannelListEditedItem extends React.PureComponent {
     static propTypes = {
         item: PropTypes.shape({
             id: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired
+            title: PropTypes.string.isRequired,
+            ownerId: PropTypes.string.isRequired
         }).isRequired,
         submitDisabled: PropTypes.bool,
         submitButtonText: PropTypes.string.isRequired,
@@ -44,6 +45,17 @@ export class ChannelListEditedItem extends React.PureComponent {
                                 value={this.props.item.title}
                                 onChange={this.props.onTitleChange}
                                 ref={(input) => { this.titleInput = input; }}
+                                onKeyDown={this._handleEscKey}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="title">Owner</label>
+                            <input
+                                disabled={true}
+                                type="text"
+                                className="form-control"
+                                id="title"
+                                value={this.props.item.ownerId}
                                 onKeyDown={this._handleEscKey}
                             />
                         </div>
