@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => ({
     submitButtonText: 'Send',
     item: {
         id: uuid(),
-        title: '',
+        messsageText: '',
         channelId: ownProps.channelId
     }
 });

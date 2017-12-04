@@ -26,7 +26,7 @@ function MessageListBarItem(props) {
         <ItemPane disabled="true">
             <ItemBar disabled="true">
                 <TitlePane>
-                    <Title>{props.item.title}</Title>
+                    <Title>{props.item.messsageText}</Title>
                 </TitlePane>
                 <ActionPane>
                     <DangerAction onClick={() => props.onDelete()}>
@@ -41,7 +41,7 @@ function MessageListBarItem(props) {
 MessageListBarItem.propTypes = {
     item: PropTypes.shape({
         id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
+        messsageText: PropTypes.string.isRequired,
         channelId: PropTypes.string.isRequired
     }).isRequired,
     onDelete: PropTypes.func.isRequired,
