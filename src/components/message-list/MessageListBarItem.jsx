@@ -31,11 +31,13 @@ function MessageListBarItem(props) {
                 <TitlePane>
                     <Title>{props.item.ownerId}</Title>
                 </TitlePane>
-                <ActionPane>
-                    <DangerAction onClick={() => props.onDelete()}>
-                        <i className="glyphicon glyphicon-remove" aria-hidden="true" />
-                    </DangerAction>
-                </ActionPane>
+                {(props.isOwner ?
+                    <ActionPane>
+                        <DangerAction onClick={() => props.onDelete()}>
+                            <i className="glyphicon glyphicon-remove" aria-hidden="true" />
+                        </DangerAction>
+                    </ActionPane> : <ActionPane/>
+                )}
             </ItemBar>
         </ItemPane>
     );
@@ -49,6 +51,7 @@ MessageListBarItem.propTypes = {
         ownerId: PropTypes.string.isRequired
     }).isRequired,
     onDelete: PropTypes.func.isRequired,
+    isOwner: PropTypes.bool.isRequired
 };
 
 export { MessageListBarItem };
