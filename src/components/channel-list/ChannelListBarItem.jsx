@@ -30,18 +30,22 @@ function ChannelListBarItem(props) {
                     <Action onClick={props.onPick}>
                         <i className="glyphicon glyphicon-menu-right" aria-hidden="true" />
                     </Action>
-                    <Action disabled={props.expandDisabled} onClick={props.expandDisabled ? null : props.onExpand}>
-                        <i className="glyphicon glyphicon-menu-down" aria-hidden="true" />
-                    </Action>
+                    {(props.isOwner === true ?
+                        <Action disabled={props.expandDisabled} onClick={props.expandDisabled ? null : props.onExpand}>
+                            <i className="glyphicon glyphicon-menu-down" aria-hidden="true"/>
+                        </Action> : <Action/>
+                    )}
                 </ActionPane>
                 <TitlePane disabled={props.expandDisabled} onClick={props.expandDisabled ? null : props.onExpand}>
                     <Title>{props.item.title}</Title>
                 </TitlePane>
-                <ActionPane>
-                    <DangerAction onClick={() => props.onDelete()}>
-                        <i className="glyphicon glyphicon-remove" aria-hidden="true" />
-                    </DangerAction>
-                </ActionPane>
+                {(props.isOwner === true ?
+                    <ActionPane>
+                        <DangerAction onClick={() => props.onDelete()}>
+                            <i className="glyphicon glyphicon-remove" aria-hidden="true" />
+                        </DangerAction>
+                    </ActionPane> : <ActionPane/>
+                )}
             </ItemBar>
         </ItemPane>
     );
@@ -55,7 +59,7 @@ ChannelListBarItem.propTypes = {
     }).isRequired,
     isSelected: PropTypes.bool,
     expandDisabled: PropTypes.bool,
-    reorderDisabled: PropTypes.bool,
+    isOwner: PropTypes.bool,
     onDelete: PropTypes.func.isRequired,
     onExpand: PropTypes.func.isRequired,
     onPick: PropTypes.func.isRequired

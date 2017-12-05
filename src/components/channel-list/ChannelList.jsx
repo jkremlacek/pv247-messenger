@@ -30,15 +30,6 @@ class ChannelList extends React.PureComponent {
                     classNames="edited-item">
                     <ChannelListEditedItem key={item.id} item={item} submitButtonText="Save" />
                 </CSSTransition>
-            ) : item.id === this.props.selectedChannelItemId ? (
-                <CSSTransition key={`bar-${item.id}`}
-                    timeout={{
-                        enter: 150,
-                        exit: 0
-                    }}
-                    classNames="bar-item">
-                    <ChannelListBarItem key={item.id} item={item} isSelected={true}/>
-                </CSSTransition>
             ) : (
                 <CSSTransition key={`bar-${item.id}`}
                     timeout={{
@@ -46,7 +37,7 @@ class ChannelList extends React.PureComponent {
                         exit: 0
                     }}
                     classNames="bar-item">
-                    <ChannelListBarItem key={item.id} item={item} />
+                    <ChannelListBarItem key={item.id} item={item} isSelected={item.id === this.props.selectedChannelItemId} isOwner={item.ownerId === this.props.ownerId} />
                 </CSSTransition>
             )
         );
