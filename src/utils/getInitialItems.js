@@ -10,24 +10,24 @@ const firstItem = {
     id: firstId,
     title: 'Family channel',
     ownerId: 'dad@family.com',
-    members: Immutable.List(),
+    members: Immutable.Set([]),
 };
 
 const secondItem = {
     id: secondId,
     title: 'Public channel',
     ownerId: 'undefined@null.zero',
-    members: Immutable.List(['undefined@null.zero'])
+    members: Immutable.Set(['undefined@null.zero'])
 };
 
 const thirdItem = {
     id: thirdId,
     title: 'Private channel',
     ownerId: 'dad@family.com',
-    members: Immutable.List()
+    members: Immutable.Set([])
 };
 
-const allIds = Immutable.List([firstId, secondId, thirdItem]);
+const allIds = Immutable.List([firstId, secondId, thirdId]);
 const byId = Immutable.Map([[firstId, firstItem], [secondId, secondItem], [thirdId, thirdItem]]);
 
 export const getInitialChannelItems = () => {

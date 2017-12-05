@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-var Immutable = require('immutable');
+import Immutable from 'immutable';
 import { FormPane, ButtonRow } from './ChannelListEditedItem.styles';
 import { ItemPane} from './ChannelListItem.styles';
 
@@ -10,7 +10,7 @@ export class ChannelListEditedItem extends React.PureComponent {
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
             ownerId: PropTypes.string.isRequired,
-            members: PropTypes.instanceOf(Immutable.List).isRequired,
+            members: PropTypes.instanceOf(Immutable.Set).isRequired,
         }).isRequired,
         submitDisabled: PropTypes.bool,
         submitButtonText: PropTypes.string.isRequired,
