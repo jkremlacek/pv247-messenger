@@ -1,3 +1,5 @@
+var Immutable = require('immutable');
+
 import { connect } from 'react-redux';
 import {uuid} from '../../utils/uuidGenerator';
 import { ChannelListEditedItem } from '../../containers/channel-list/ChannelListEditedItem.jsx';
@@ -11,7 +13,8 @@ const mapStateToProps = (state, ownProps) => ({
     item: {
         id: uuid(),
         title: '',
-        ownerId: ownProps.ownerId
+        ownerId: ownProps.ownerId,
+        members: Immutable.List(),
     }
 });
 

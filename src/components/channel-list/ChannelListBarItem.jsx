@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+var Immutable = require('immutable');
 import {
     ItemBar,
     TitlePane,
@@ -55,7 +56,8 @@ ChannelListBarItem.propTypes = {
     item: PropTypes.shape({
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
-        ownerId: PropTypes.string.isRequired
+        ownerId: PropTypes.string.isRequired,
+        members: PropTypes.instanceOf(Immutable.List).isRequired,
     }).isRequired,
     isSelected: PropTypes.bool,
     expandDisabled: PropTypes.bool,

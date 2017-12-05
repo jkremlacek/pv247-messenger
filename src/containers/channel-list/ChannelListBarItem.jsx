@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+var Immutable = require('immutable');
 import {
     DragSource,
     DropTarget
@@ -43,7 +44,8 @@ DndChannelListBarItem.propTypes = {
     item: PropTypes.shape({
         id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
-        ownerId: PropTypes.string.isRequired
+        ownerId: PropTypes.string.isRequired,
+        members: PropTypes.instanceOf(Immutable.List).isRequired,
     }).isRequired,
     expandDisabled: PropTypes.bool,
     onDelete: PropTypes.func.isRequired,

@@ -4,21 +4,31 @@ import * as keys from '../constants/localStorageKeys';
 
 const firstId = uuid();
 const secondId = uuid();
+const thirdId = uuid();
 
 const firstItem = {
     id: firstId,
     title: 'Family channel',
-    ownerId: 'dad@family.com'
+    ownerId: 'dad@family.com',
+    members: Immutable.List(),
 };
 
 const secondItem = {
     id: secondId,
     title: 'Public channel',
-    ownerId: 'undefined@null.zero'
+    ownerId: 'undefined@null.zero',
+    members: Immutable.List(['undefined@null.zero'])
 };
 
-const allIds = Immutable.List([firstId, secondId]);
-const byId = Immutable.Map([[firstId, firstItem], [secondId, secondItem]]);
+const thirdItem = {
+    id: thirdId,
+    title: 'Private channel',
+    ownerId: 'dad@family.com',
+    members: Immutable.List()
+};
+
+const allIds = Immutable.List([firstId, secondId, thirdItem]);
+const byId = Immutable.Map([[firstId, firstItem], [secondId, secondItem], [thirdId, thirdItem]]);
 
 export const getInitialChannelItems = () => {
     const storedMapJSON = localStorage.getItem(keys.ITEMS_CHANNEL_BY_ID);
