@@ -10,7 +10,7 @@ const firstItem = {
     id: firstId,
     title: 'Family channel',
     ownerId: 'dad@family.com',
-    members: Immutable.Set([]),
+    members: Immutable.Set(['undefined@null.zero']),
 };
 
 const secondItem = {

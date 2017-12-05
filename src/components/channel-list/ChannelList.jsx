@@ -20,7 +20,7 @@ class ChannelList extends React.PureComponent {
     };
 
     render() {
-        let itemElements = this.props.list.map(item =>
+        let itemElements = this.props.list.filter(item => item.members.contains(this.props.ownerId) || item.ownerId === this.props.ownerId).map(item =>
             item.id === this.props.editedChannelItemId ? (
                 <CSSTransition key={`edited-${item.id}`}
                     timeout={{
