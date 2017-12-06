@@ -90,7 +90,13 @@ const secondUser = {
     avatar: ''
 };
 
-const allUsers = Immutable.List([firstUser, secondUser]);
+const thirdUser = {
+    id: 'mum@family.com',
+    name: 'Mother',
+    avatar: ''
+};
+
+const allUsers = Immutable.List([firstUser, secondUser, thirdUser]);
 
 export const getInitialUsers = () => {
     return {

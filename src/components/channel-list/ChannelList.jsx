@@ -17,7 +17,7 @@ class ChannelList extends React.PureComponent {
         createNewFormVisible: PropTypes.bool,
         onCreateNewClick: PropTypes.func.isRequired,
         ownerId: PropTypes.string,
-        users: PropTypes.instanceOf(Immutable.List).isRequired
+        usersList: PropTypes.instanceOf(Immutable.List).isRequired
     };
 
     render() {
@@ -29,7 +29,7 @@ class ChannelList extends React.PureComponent {
                         exit: 150
                     }}
                     classNames="edited-item">
-                    <ChannelListEditedItem key={item.id} item={item} users={this.props.users} submitButtonText="Save" />
+                    <ChannelListEditedItem key={item.id} item={item} usersList={this.props.usersList} submitButtonText="Save" />
                 </CSSTransition>
             ) : (
                 <CSSTransition key={`bar-${item.id}`}

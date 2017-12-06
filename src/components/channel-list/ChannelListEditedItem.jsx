@@ -19,7 +19,9 @@ export class ChannelListEditedItem extends React.PureComponent {
         onDescriptionChange: PropTypes.func.isRequired,
         onCancel: PropTypes.func.isRequired,
         onSubmit: PropTypes.func.isRequired,
-        users: PropTypes.instanceOf(Immutable.List).isRequired
+        //TODO: add to members
+        onInvite: PropTypes.func.isRequired,
+        usersList: PropTypes.instanceOf(Immutable.List).isRequired
     };
 
     componentDidMount(){
@@ -63,11 +65,6 @@ export class ChannelListEditedItem extends React.PureComponent {
                                 onKeyDown={this._handleEscKey}
                             />
                         </div>
-                        <div className="form-group">
-                            <Select
-                                value={this.props.item.members}
-                            />
-                        </div>
                         <ButtonRow>
                             <button
                                 type="submit"
@@ -83,6 +80,29 @@ export class ChannelListEditedItem extends React.PureComponent {
                                 onClick={this.props.onCancel}
                             >
                                 Cancel
+                            </button>
+                        </ButtonRow>
+                    </form>
+                </FormPane>
+                <FormPane>
+                    <form>
+                        <div className="form-group">
+                            <label htmlFor="invite">Invite</label>
+                            <select className="form-control">
+                                {
+                                    this.props.usersList.filter(item => this.props.item.members.includes(item.id) != true ).map(
+                                        (listValue) => <option key={listValue.id} value={listValue}>{listValue.name}</option>
+                                    )
+                                }
+                            </select>
+                        </div>
+                        <ButtonRow>
+                            <button
+                                type="submit"
+                                className="btn btn-primary btn-sm"
+                                onClick={this.props.onInvite}
+                            >
+                                Invite
                             </button>
                         </ButtonRow>
                     </form>

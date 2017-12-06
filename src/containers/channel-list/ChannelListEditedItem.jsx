@@ -13,7 +13,8 @@ export class ChannelListEditedItem extends React.PureComponent {
         }).isRequired,
         submitButtonText: PropTypes.string.isRequired,
         onCancel: PropTypes.func.isRequired,
-        onSubmit: PropTypes.func.isRequired
+        onSubmit: PropTypes.func.isRequired,
+        usersList: PropTypes.instanceOf(Immutable.List).isRequired
     };
 
     constructor(props) {
@@ -64,6 +65,7 @@ export class ChannelListEditedItem extends React.PureComponent {
                 onDescriptionChange={this._onDescriptionChange}
                 onCancel={this.props.onCancel}
                 onSubmit={() => this.props.onSubmit(this.state.editedItem)}
+                usersList={this.props.usersList}
             />
         );
     }
