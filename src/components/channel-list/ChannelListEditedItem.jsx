@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Immutable from 'immutable';
+
 import { FormPane, ButtonRow } from './ChannelListEditedItem.styles';
 import { ItemPane} from './ChannelListItem.styles';
 
@@ -17,7 +18,8 @@ export class ChannelListEditedItem extends React.PureComponent {
         onTitleChange: PropTypes.func.isRequired,
         onDescriptionChange: PropTypes.func.isRequired,
         onCancel: PropTypes.func.isRequired,
-        onSubmit: PropTypes.func.isRequired
+        onSubmit: PropTypes.func.isRequired,
+        users: PropTypes.instanceOf(Immutable.List).isRequired
     };
 
     componentDidMount(){
@@ -59,6 +61,11 @@ export class ChannelListEditedItem extends React.PureComponent {
                                 id="title"
                                 value={this.props.item.ownerId}
                                 onKeyDown={this._handleEscKey}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <Select
+                                value={this.props.item.members}
                             />
                         </div>
                         <ButtonRow>

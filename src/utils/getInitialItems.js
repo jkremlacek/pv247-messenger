@@ -78,4 +78,24 @@ export const getInitialMessageItems = () => {
     };
 };
 
+const firstUser = {
+    id: 'undefined@null.zero',
+    name: 'MasterAdmin',
+    avatar: ''
+};
+
+const secondUser = {
+    id: 'dad@family.com',
+    name: 'Dad',
+    avatar: ''
+};
+
+const allUsers = Immutable.List([firstUser, secondUser]);
+
+export const getInitialUsers = () => {
+    return {
+        list: allUsers
+    };
+};
+
 

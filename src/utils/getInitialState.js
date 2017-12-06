@@ -1,4 +1,4 @@
-import { getInitialChannelItems, getInitialMessageItems } from './getInitialItems';
+import { getInitialChannelItems, getInitialMessageItems, getInitialUsers } from './getInitialItems';
 import { getPersistedToken } from './getPersistedToken';
 
 export const getInitialState = () => ({
@@ -14,5 +14,8 @@ export const getInitialState = () => ({
     },
     shared: {
         token: getPersistedToken()
+    },
+    users: {
+        ...getInitialUsers()
     }
 });
