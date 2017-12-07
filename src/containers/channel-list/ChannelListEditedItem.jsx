@@ -12,16 +12,20 @@ export class ChannelListEditedItem extends React.PureComponent {
             members: PropTypes.instanceOf(Immutable.Set).isRequired,
         }).isRequired,
         submitButtonText: PropTypes.string.isRequired,
+        editForm: PropTypes.bool,
         onCancel: PropTypes.func.isRequired,
         onSubmit: PropTypes.func.isRequired,
-        usersList: PropTypes.instanceOf(Immutable.List).isRequired
+        usersList: PropTypes.instanceOf(Immutable.List).isRequired,
+        inviteOnSubmit: PropTypes.func,
+        invitee: PropTypes.string
     };
 
     constructor(props) {
         super(props);
 
         this.state = {
-            editedItem: props.item
+            editedItem: props.item,
+            invitee: ''
         };
     }
 
@@ -55,6 +59,12 @@ export class ChannelListEditedItem extends React.PureComponent {
         }));
     };
 
+    _inviteOnChange = (event) => {
+        this.setState(({
+            invitee: event.target.value,
+        }));
+    };
+
     render() {
         return (
             <ChannelListEditedItemComponent
@@ -65,7 +75,11 @@ export class ChannelListEditedItem extends React.PureComponent {
                 onDescriptionChange={this._onDescriptionChange}
                 onCancel={this.props.onCancel}
                 onSubmit={() => this.props.onSubmit(this.state.editedItem)}
+                editForm={this.props.editForm}
+                inviteOnSubmit={() => this.props.inviteOnSubmit(this.state.editedItem, this.state.invitee)}
+                inviteOnChange={this._inviteOnChange}
                 usersList={this.props.usersList}
+                inviteDisabled={this.state.invitee === ''}
             />
         );
     }

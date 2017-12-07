@@ -41,6 +41,14 @@ export const startEditingItem = (id) => ({
     }
 });
 
+export const inviteUser = (item, id) => ({
+    type: actionTypes.CHANNEL_LIST_ITEM_INVITE_USER,
+    payload: {
+        item,
+        id
+    }
+});
+
 export const cancelEditingItem = () => ({
     type: actionTypes.CHANNEL_LIST_ITEM_CANCEL_EDITING,
 });

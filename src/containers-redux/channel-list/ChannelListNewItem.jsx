@@ -9,6 +9,7 @@ import {
 
 const mapStateToProps = (state, ownProps) => ({
     submitButtonText: 'Create',
+    editForm: false,
     item: {
         id: uuid(),
         title: '',

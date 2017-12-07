@@ -2,6 +2,7 @@ import * as Immutable from 'immutable';
 import {
     CHANNEL_LIST_ITEM_CREATE,
     CHANNEL_LIST_ITEM_DELETE,
+    CHANNEL_LIST_ITEM_INVITE_USER,
     CHANNEL_LIST_ITEM_UPDATE
 } from '../../../constants/actionTypes';
 
@@ -11,6 +12,10 @@ export const byId = (previousState = Immutable.Map(), action) => {
             return previousState.set(action.payload.item.id, { ...action.payload.item });
 
         case CHANNEL_LIST_ITEM_UPDATE:
+            return previousState.mergeIn([action.payload.item.id], { ...action.payload.item });
+
+        case CHANNEL_LIST_ITEM_INVITE_USER:
+            action.payload.item.members = Immutable.Set([...action.payload.item.members, action.payload.id]);
             return previousState.mergeIn([action.payload.item.id], { ...action.payload.item });
 
         case CHANNEL_LIST_ITEM_DELETE:

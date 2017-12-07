@@ -19,9 +19,12 @@ export class ChannelListEditedItem extends React.PureComponent {
         onDescriptionChange: PropTypes.func.isRequired,
         onCancel: PropTypes.func.isRequired,
         onSubmit: PropTypes.func.isRequired,
-        //TODO: add to members
-        onInvite: PropTypes.func.isRequired,
-        usersList: PropTypes.instanceOf(Immutable.List).isRequired
+        invitee: PropTypes.string,
+        inviteOnSubmit: PropTypes.func.isRequired,
+        inviteOnChange: PropTypes.func.isRequired,
+        usersList: PropTypes.instanceOf(Immutable.List).isRequired,
+        inviteDisabled: PropTypes.bool,
+        editForm: PropTypes.bool
     };
 
     componentDidMount(){
@@ -84,29 +87,35 @@ export class ChannelListEditedItem extends React.PureComponent {
                         </ButtonRow>
                     </form>
                 </FormPane>
-                <FormPane>
-                    <form>
-                        <div className="form-group">
-                            <label htmlFor="invite">Invite</label>
-                            <select className="form-control">
-                                {
-                                    this.props.usersList.filter(item => this.props.item.members.includes(item.id) != true ).map(
-                                        (listValue) => <option key={listValue.id} value={listValue}>{listValue.name}</option>
-                                    )
-                                }
-                            </select>
-                        </div>
-                        <ButtonRow>
-                            <button
-                                type="submit"
-                                className="btn btn-primary btn-sm"
-                                onClick={this.props.onInvite}
-                            >
-                                Invite
-                            </button>
-                        </ButtonRow>
-                    </form>
-                </FormPane>
+                { this.props.editForm === false ? '' :
+                    <FormPane>
+                        <form>
+                            <div className="form-group">
+                                <label htmlFor="invite">Invite</label>
+                                <select className="form-control" value={this.props.invitee}
+                                        onChange={this.props.inviteOnChange} selected=''>
+                                    <option key='' hidden>Choose here</option>
+                                    {
+                                        this.props.usersList.filter(item => this.props.item.members.includes(item.id) != true).map(
+                                            (listValue) => <option key={listValue.id}
+                                                                   value={listValue.id}>{listValue.name}</option>
+                                        )
+                                    }
+                                </select>
+                            </div>
+                            <ButtonRow>
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary btn-sm"
+                                    disabled={this.props.inviteDisabled}
+                                    onClick={this.props.inviteOnSubmit}
+                                >
+                                    Invite
+                                </button>
+                            </ButtonRow>
+                        </form>
+                    </FormPane>
+                }
             </ItemPane>
         );
     }

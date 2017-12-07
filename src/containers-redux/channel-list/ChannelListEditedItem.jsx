@@ -3,10 +3,12 @@ import { ChannelListEditedItem } from '../../containers/channel-list/ChannelList
 import {
     cancelEditingItem,
     updateItem,
+    inviteUser
 } from '../../actions/channel-list/actionCreators';
 
 const mapDispatchToProps = (dispatch) => ({
     onSubmit: (item) => dispatch(updateItem(item)),
+    inviteOnSubmit: (item, invitee) => dispatch(inviteUser(item, invitee)),
     onCancel: () => dispatch(cancelEditingItem()),
 });
 
