@@ -51,6 +51,26 @@ export const Action = ActionPlaceholder.extend`
     }
 `;
 
+export const VoteAction = Action.extend`
+    color: ${
+                props => props.active ? (
+                    props.positive ? 
+                        '#3cd959'
+                        : '#d9534f')
+                    : 'inherit'
+            };
+    &:hover {
+        background-color: ${props => props.disabled ? 'inherit' : '#eee'};
+        color: ${
+                props => props.active ? (
+                        props.positive ?
+                            '#3cd959'
+                            : '#d9534f')
+                    : 'inherit'
+                };
+    }
+`;
+
 export const DangerAction = Action.extend`
     &:hover {
         background-color: ${props => props.disabled ? 'inherit' : '#d9534f'};

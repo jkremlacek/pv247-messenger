@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Immutable from 'immutable';
 import {
     ItemBar,
     TitlePane,
     Title,
     ActionPane,
-    Action,
+    VoteAction,
     Message,
     ActionPlaceholder,
     DangerAction
@@ -43,14 +44,14 @@ function MessageListBarItem(props) {
                     }
                 </ActionPane>
                 <ActionPane>
-                    <Action onClick={() => props.onPlus()}>
+                    <VoteAction onClick={() => props.onPlus(props.userId)} active={props.item.votedPlus.has(props.userId)} positive={true}>
                         <i className="glyphicon glyphicon-plus" aria-hidden="true"/>
-                    </Action>
+                    </VoteAction>
                 </ActionPane>
                 <ActionPane>
-                    <Action onClick={() => props.onMinus()}>
+                    <VoteAction onClick={() => props.onMinus(props.userId)} active={props.item.votedMinus.has(props.userId)} positive={false}>
                         <i className="glyphicon glyphicon-minus" aria-hidden="true"/>
-                    </Action>
+                    </VoteAction>
                 </ActionPane>
                 <ActionPane>
                     {(props.isOwner ?
@@ -80,12 +81,15 @@ MessageListBarItem.propTypes = {
         messageText: PropTypes.string.isRequired,
         channelId: PropTypes.string.isRequired,
         ownerId: PropTypes.string.isRequired,
-        score: PropTypes.number.isRequired
+        score: PropTypes.number.isRequired,
+        votedPlus: PropTypes.instanceOf(Immutable.Set).isRequired,
+        votedMinus: PropTypes.instanceOf(Immutable.Set).isRequired
     }).isRequired,
     onDelete: PropTypes.func.isRequired,
     onPlus: PropTypes.func.isRequired,
     onMinus: PropTypes.func.isRequired,
-    isOwner: PropTypes.bool.isRequired
+    isOwner: PropTypes.bool.isRequired,
+    userId: PropTypes.string.isRequired
 };
 
 export { MessageListBarItem };

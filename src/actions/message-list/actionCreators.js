@@ -27,17 +27,19 @@ export const deleteItem = (id) => ({
     }
 });
 
-export const upVoteItem = (item) => ({
+export const upVoteItem = (item, id) => ({
     type: actionTypes.MESSAGE_LIST_ITEM_UPVOTE,
     payload: {
         item,
+        id
     }
 });
 
-export const downVoteItem = (item) => ({
+export const downVoteItem = (item, id) => ({
     type: actionTypes.MESSAGE_LIST_ITEM_DOWNVOTE,
     payload: {
         item,
+        id
     }
 });
 

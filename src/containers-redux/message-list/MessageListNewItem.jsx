@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import {uuid} from '../../utils/uuidGenerator';
+import * as Immutable from 'immutable';
 import { MessageListEditedItem } from '../../containers/message-list/MessageListEditedItem.jsx';
 import {
     createNewItem,
@@ -10,10 +11,12 @@ const mapStateToProps = (state, ownProps) => ({
     submitButtonText: 'Send',
     item: {
         id: uuid(),
-        messsageText: '',
+        messageText: '',
         ownerId: ownProps.ownerId,
         channelId: ownProps.channelId,
-        score: 0
+        score: 0,
+        votedPlus: Immutable.Set(),
+        votedMinus: Immutable.Set()
     }
 });
 

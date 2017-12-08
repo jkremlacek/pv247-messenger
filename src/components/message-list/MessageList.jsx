@@ -26,7 +26,7 @@ class MessageList extends React.PureComponent {
                         exit: 0
                     }}
                     classNames="bar-item">
-                    <MessageListBarItem key={item.id} item={item} isOwner={this.props.ownerId===item.ownerId}/>
+                    <MessageListBarItem key={item.id} item={item} isOwner={this.props.ownerId===item.ownerId} userId={this.props.ownerId}/>
                 </CSSTransition>
             )
         );

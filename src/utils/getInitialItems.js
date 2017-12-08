@@ -49,7 +49,9 @@ const firstMessageItem = {
     messageText: 'this is first channel, first message',
     channelId: firstId,
     ownerId: 'undefined@null.zero',
-    score: 0
+    score: 0,
+    votedPlus: Immutable.Set(),
+    votedMinus: Immutable.Set()
 };
 
 const secondMessageItem = {
@@ -61,7 +63,9 @@ const secondMessageItem = {
     'Aenean finibus nunc nec accumsan tristique. Pellentesque gravida nec sem nec pellentesque. ',
     channelId: firstId,
     ownerId: 'dad@family.com',
-    score: 0
+    score: 0,
+    votedPlus: Immutable.Set(),
+    votedMinus: Immutable.Set()
 };
 
 const thirdMessageItem = {
@@ -69,7 +73,9 @@ const thirdMessageItem = {
     messageText: 'this is second channel, first message',
     channelId: secondId,
     ownerId: 'undefined@null.zero',
-    score: 0
+    score: 0,
+    votedPlus: Immutable.Set(),
+    votedMinus: Immutable.Set()
 };
 
 const allMessageIds = Immutable.List([firstMessageId, secondMessageId, thirdMessageId]);

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Immutable from 'immutable';
 import {
     DragSource,
     DropTarget
@@ -53,7 +54,9 @@ DndMessageListBarItem.propTypes = {
         messageText: PropTypes.string.isRequired,
         channelId: PropTypes.string.isRequired,
         ownerId: PropTypes.string.isRequired,
-        score: PropTypes.string.isRequired
+        score: PropTypes.number.isRequired,
+        votedPlus: PropTypes.instanceOf(Immutable.Set).isRequired,
+        votedMinus: PropTypes.instanceOf(Immutable.Set).isRequired
     }).isRequired,
     onDelete: PropTypes.func.isRequired,
     onPlus: PropTypes.func.isRequired,

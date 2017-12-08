@@ -6,7 +6,7 @@ export class MessageListEditedItem extends React.PureComponent {
     static propTypes = {
         item: PropTypes.shape({
             id: PropTypes.string.isRequired,
-            messsageText: PropTypes.string.isRequired,
+            messageText: PropTypes.string.isRequired,
             channelId: PropTypes.string.isRequired,
             ownerId: PropTypes.string.isRequired
         }).isRequired,
@@ -37,7 +37,7 @@ export class MessageListEditedItem extends React.PureComponent {
         this.setState((previousState) => ({
             editedItem: {
                 ...previousState.editedItem,
-                messsageText: value
+                messageText: value
             }
         }));
     };
@@ -57,7 +57,7 @@ export class MessageListEditedItem extends React.PureComponent {
         return (
             <MessageListEditedItemComponent
                 item={this.state.editedItem}
-                submitDisabled={this.state.editedItem === this.props.item || this.state.editedItem.channelId === null || this.state.editedItem.messsageText === ''}
+                submitDisabled={this.state.editedItem === this.props.item || this.state.editedItem.channelId === null || this.state.editedItem.messageText === ''}
                 submitButtonText={this.props.submitButtonText}
                 onTitleChange={this._onTitleChange}
                 onDescriptionChange={this._onDescriptionChange}

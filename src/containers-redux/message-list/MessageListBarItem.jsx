@@ -12,8 +12,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     onDelete: () => dispatch(deleteItem(ownProps.item.id)),
-    onPlus: () => dispatch(upVoteItem(ownProps.item)),
-    onMinus: () => dispatch(downVoteItem(ownProps.item))
+    onPlus: (userId) => dispatch(upVoteItem(ownProps.item, userId)),
+    onMinus: (userId) => dispatch(downVoteItem(ownProps.item, userId))
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);

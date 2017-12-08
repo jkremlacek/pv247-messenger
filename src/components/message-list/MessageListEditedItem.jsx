@@ -7,7 +7,8 @@ export class MessageListEditedItem extends React.PureComponent {
     static propTypes = {
         item: PropTypes.shape({
             id: PropTypes.string.isRequired,
-            messsageText: PropTypes.string.isRequired,
+            messageText: PropTypes.string.isRequired,
+            channelId: PropTypes.string.isRequired,
             description: PropTypes.string
         }).isRequired,
         submitDisabled: PropTypes.bool,
@@ -41,7 +42,7 @@ export class MessageListEditedItem extends React.PureComponent {
                                 type="text"
                                 className="form-control"
                                 id="title"
-                                value={this.props.item.messsageText}
+                                value={this.props.item.messageText}
                                 onChange={this.props.onTitleChange}
                                 ref={(input) => { this.titleInput = input; }}
                                 onKeyDown={this._handleEscKey}
