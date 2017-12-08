@@ -35,6 +35,14 @@ function MessageListBarItem(props) {
                     <Title>{props.item.ownerId}</Title>
                 </TitlePane>
                 <ActionPane>
+                    {
+                        props.item.score > 0 ?
+                            <ActionPlaceholder><b>+{props.item.score}</b></ActionPlaceholder>
+                            :
+                            <ActionPlaceholder><b>{props.item.score}</b></ActionPlaceholder>
+                    }
+                </ActionPane>
+                <ActionPane>
                     <Action onClick={() => props.onPlus()}>
                         <i className="glyphicon glyphicon-plus" aria-hidden="true"/>
                     </Action>

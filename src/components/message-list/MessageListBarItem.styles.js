@@ -34,14 +34,14 @@ export const ActionPane = styled.div`;
 `;
 
 export const ActionPlaceholder = styled.div`
+    display: flex;
+    align-items: center;
     width: 40px;
     height: 40px;
+    justify-content: space-around;
 `;
 
 export const Action = ActionPlaceholder.extend`
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
     cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
     color: ${props => props.disabled ? '#DDD' : '#777'};
     

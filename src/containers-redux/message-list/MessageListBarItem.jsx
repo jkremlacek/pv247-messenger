@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import { MessageListBarItem } from '../../containers/message-list/MessageListBarItem.jsx';
 import {
     deleteItem,
-    startEditingItem
+    upVoteItem,
+    downVoteItem
 } from '../../actions/message-list/actionCreators';
 
 const mapStateToProps = (state) => ({
@@ -11,7 +12,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     onDelete: () => dispatch(deleteItem(ownProps.item.id)),
-    onExpand: () => dispatch(startEditingItem(ownProps.item.id))
+    onPlus: () => dispatch(upVoteItem(ownProps.item)),
+    onMinus: () => dispatch(downVoteItem(ownProps.item))
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);

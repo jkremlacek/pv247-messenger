@@ -52,13 +52,12 @@ DndMessageListBarItem.propTypes = {
         id: PropTypes.string.isRequired,
         messageText: PropTypes.string.isRequired,
         channelId: PropTypes.string.isRequired,
-        ownerId: PropTypes.string.isRequired
+        ownerId: PropTypes.string.isRequired,
+        score: PropTypes.string.isRequired
     }).isRequired,
-    expandDisabled: PropTypes.bool,
-    reorderDisabled: PropTypes.bool,
     onDelete: PropTypes.func.isRequired,
-    onExpand: PropTypes.func.isRequired,
-    onReorder: PropTypes.func.isRequired
+    onPlus: PropTypes.func.isRequired,
+    onMinus: PropTypes.func.isRequired,
 };
 
 export { DndMessageListBarItem as MessageListBarItem };

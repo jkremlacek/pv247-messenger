@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => ({
         id: uuid(),
         messsageText: '',
         ownerId: ownProps.ownerId,
-        channelId: ownProps.channelId
+        channelId: ownProps.channelId,
+        score: 0
     }
 });
 

@@ -27,10 +27,17 @@ export const deleteItem = (id) => ({
     }
 });
 
-export const startEditingItem = (id) => ({
-    type: actionTypes.MESSAGE_LIST_ITEM_START_EDITING,
+export const upVoteItem = (item) => ({
+    type: actionTypes.MESSAGE_LIST_ITEM_UPVOTE,
     payload: {
-        id,
+        item,
+    }
+});
+
+export const downVoteItem = (item) => ({
+    type: actionTypes.MESSAGE_LIST_ITEM_DOWNVOTE,
+    payload: {
+        item,
     }
 });
 
