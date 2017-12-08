@@ -15,7 +15,7 @@ export class ChannelListEditedItem extends React.PureComponent {
         editForm: PropTypes.bool,
         onCancel: PropTypes.func.isRequired,
         onSubmit: PropTypes.func.isRequired,
-        usersList: PropTypes.instanceOf(Immutable.List).isRequired,
+        usersList: PropTypes.instanceOf(Immutable.List),
         inviteOnSubmit: PropTypes.func,
         invitee: PropTypes.string
     };

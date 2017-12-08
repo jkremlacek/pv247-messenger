@@ -42,7 +42,7 @@ export const getInitialChannelItems = () => {
 
 const firstMessageId = uuid();
 const secondMessageId = uuid();
-const thirdMessageId = uuid;
+const thirdMessageId = uuid();
 
 const firstMessageItem = {
     id: firstMessageId,
