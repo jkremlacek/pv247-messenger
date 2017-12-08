@@ -34,12 +34,15 @@ class MessageList extends React.PureComponent {
 
         itemElements = itemElements.push((
             <CSSTransition key="new-item"
-                timeout={{
-                    enter: 350,
-                    exit: 150
-                }}
-                classNames="new-item">
-                <MessageListNewItem channelId={this.props.selectedChannelItemId} ownerId={this.props.ownerId}/>
+                           timeout={{
+                               enter: 350,
+                               exit: 150
+                           }}
+                           classNames="new-item">
+                {this.props.selectedChannelItemId ?
+                    <MessageListNewItem channelId={this.props.selectedChannelItemId} ownerId={this.props.ownerId}/> :
+                    <div>Pick a channel to display messages.</div>
+                }
             </CSSTransition>
         ));
 

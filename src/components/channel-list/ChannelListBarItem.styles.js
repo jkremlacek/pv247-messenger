@@ -50,15 +50,10 @@ export const DangerAction = Action.extend`
     }
 `;
 
-export const GrabAction = Action.extend`
-    cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
-    
-    & > i {
-        left: -0.33em;
-    }
-    
-    & > i:before {
-        content: "\\E235 \\E235";
-        letter-spacing: -0.66em;
-    }   
+export const ActionPlaceholder = styled.div`
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    justify-content: space-around;
 `;

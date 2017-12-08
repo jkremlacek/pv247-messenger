@@ -99,7 +99,7 @@ MessageListBarItem.propTypes = {
     onMinus: PropTypes.func.isRequired,
     isOwner: PropTypes.bool.isRequired,
     userId: PropTypes.string.isRequired,
-    owner: PropTypes.string.isRequired
+    owner: PropTypes.instanceOf(Object).isRequired
 };
 
 export { MessageListBarItem };

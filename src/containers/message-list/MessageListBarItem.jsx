@@ -61,7 +61,7 @@ DndMessageListBarItem.propTypes = {
     onDelete: PropTypes.func.isRequired,
     onPlus: PropTypes.func.isRequired,
     onMinus: PropTypes.func.isRequired,
-    ownerAvatar: PropTypes.string.isRequired
+    owner: PropTypes.instanceOf(Object).isRequired
 };
 
 export { DndMessageListBarItem as MessageListBarItem };

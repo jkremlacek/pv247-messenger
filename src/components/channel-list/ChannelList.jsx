@@ -38,7 +38,7 @@ class ChannelList extends React.PureComponent {
                         exit: 0
                     }}
                     classNames="bar-item">
-                    <ChannelListBarItem key={item.id} item={item} isSelected={item.id === this.props.selectedChannelItemId} isOwner={item.ownerId === this.props.ownerId} />
+                    <ChannelListBarItem key={item.id} item={item} isSelected={item.id === this.props.selectedChannelItemId} isOwner={item.ownerId === this.props.ownerId}/>
                 </CSSTransition>
             )
         );

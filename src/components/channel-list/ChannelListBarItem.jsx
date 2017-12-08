@@ -7,6 +7,7 @@ import {
     Title,
     ActionPane,
     Action,
+    ActionPlaceholder,
     DangerAction
 } from './ChannelListBarItem.styles';
 import { ItemPane} from './ChannelListItem.styles';
@@ -26,17 +27,22 @@ ConnectDnd.prototypes = {
 function ChannelListBarItem(props) {
     return (
         <ItemPane>
-            <ItemBar disabled={props.expandDisabled} selected={props.isSelected}>
+            <ItemBar disabled={props.expandDisabled || false === props.isOwner} selected={props.isSelected}>
                 <ActionPane>
                     <Action onClick={props.onPick}>
                         <i className="glyphicon glyphicon-menu-right" aria-hidden="true" />
                     </Action>
-                    {(props.isOwner === true ?
+                </ActionPane>
+                {(props.isOwner === true ?
+                    <ActionPane>
                         <Action disabled={props.expandDisabled} onClick={props.expandDisabled ? null : props.onExpand}>
                             <i className="glyphicon glyphicon-menu-down" aria-hidden="true"/>
-                        </Action> : <Action/>
-                    )}
-                </ActionPane>
+                        </Action>
+                    </ActionPane> :
+                    <ActionPane>
+                        <ActionPlaceholder/>
+                    </ActionPane>
+                )}
                 <TitlePane disabled={props.expandDisabled} onClick={props.expandDisabled ? null : props.onExpand}>
                     <Title>{props.item.title}</Title>
                 </TitlePane>
@@ -45,7 +51,7 @@ function ChannelListBarItem(props) {
                         <DangerAction onClick={() => props.onDelete()}>
                             <i className="glyphicon glyphicon-remove" aria-hidden="true" />
                         </DangerAction>
-                    </ActionPane> : <ActionPane/>
+                    </ActionPane> : <ActionPane disabled={true}/>
                 )}
             </ItemBar>
         </ItemPane>
