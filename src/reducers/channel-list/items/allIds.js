@@ -2,7 +2,7 @@ import * as Immutable from 'immutable';
 import {
     CHANNEL_LIST_ITEM_CREATE,
     CHANNEL_LIST_ITEM_DELETE,
-    CHANNEL_LIST_ITEM_MOVE,
+    CHANNEL_LIST_ITEM_MOVE, CHANNEL_LIST_UPDATE,
 } from '../../../constants/actionTypes';
 
 export const allIds = (previousState = Immutable.List(), action) => {
@@ -23,6 +23,14 @@ export const allIds = (previousState = Immutable.List(), action) => {
 
             return previousState.delete(moveItemIndex).insert(destinationItemIndex, action.payload.moveItemId);
         }
+
+        case CHANNEL_LIST_UPDATE:
+            //because async
+            if (typeof action.payload.list === 'undefined') {
+                return previousState;
+            } else {
+                return previousState = Immutable.List(Array.from(action.payload.list.keys()));
+            }
 
         default:
             return previousState;

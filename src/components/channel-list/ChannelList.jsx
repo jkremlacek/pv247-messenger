@@ -17,8 +17,13 @@ class ChannelList extends React.PureComponent {
         createNewFormVisible: PropTypes.bool,
         onCreateNewClick: PropTypes.func.isRequired,
         ownerId: PropTypes.string,
-        usersList: PropTypes.instanceOf(Immutable.List).isRequired
+        usersList: PropTypes.instanceOf(Immutable.List).isRequired,
+        fetchList: PropTypes.func.isRequired,
     };
+
+    componentWillMount() {
+        this.props.fetchList();
+    }
 
     render() {
         let itemElements = this.props.list.filter(item => item.members.contains(this.props.ownerId) || item.ownerId === this.props.ownerId).map(item =>

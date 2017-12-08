@@ -1,5 +1,6 @@
 import { uuid } from '../../utils/uuidGenerator';
 import * as actionTypes from '../../constants/actionTypes';
+import {FAILED_FETCH_CHANNEL_LIST_MESSAGE} from '../../constants/uiConstants';
 
 export const createNewItem = (newItem) => ({
     type: actionTypes.CHANNEL_LIST_ITEM_CREATE,
@@ -46,6 +47,28 @@ export const inviteUser = (item, id) => ({
     payload: {
         item,
         id
+    }
+});
+
+export const updateChannelList = (list) => ({
+    type: actionTypes.CHANNEL_LIST_UPDATE,
+    payload: {
+        list,
+    }
+});
+
+export const startFetchingChannelList = () => ({
+    type: actionTypes.CHANNEL_LIST_UPDATE_START,
+    payload: {
+
+    }
+});
+
+export const failFetchingChannelList = (message, error) => ({
+    type: FAILED_FETCH_CHANNEL_LIST_MESSAGE,
+    payload: {
+        message: message,
+        error: error,
     }
 });
 

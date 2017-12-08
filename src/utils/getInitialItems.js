@@ -16,15 +16,15 @@ const firstItem = {
 const secondItem = {
     id: secondId,
     title: 'Public channel',
+    members: Immutable.Set(['undefined@null.zero']),
     ownerId: 'undefined@null.zero',
-    members: Immutable.Set(['undefined@null.zero'])
 };
 
 const thirdItem = {
     id: thirdId,
     title: 'Private channel',
+    members: Immutable.Set([]),
     ownerId: 'dad@family.com',
-    members: Immutable.Set([])
 };
 
 const allIds = Immutable.List([firstId, secondId, thirdId]);

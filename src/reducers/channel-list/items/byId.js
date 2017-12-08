@@ -3,7 +3,7 @@ import {
     CHANNEL_LIST_ITEM_CREATE,
     CHANNEL_LIST_ITEM_DELETE,
     CHANNEL_LIST_ITEM_INVITE_USER,
-    CHANNEL_LIST_ITEM_UPDATE
+    CHANNEL_LIST_ITEM_UPDATE, CHANNEL_LIST_UPDATE,
 } from '../../../constants/actionTypes';
 
 export const byId = (previousState = Immutable.Map(), action) => {
@@ -20,6 +20,14 @@ export const byId = (previousState = Immutable.Map(), action) => {
 
         case CHANNEL_LIST_ITEM_DELETE:
             return previousState.delete(action.payload.id);
+
+        case CHANNEL_LIST_UPDATE:
+            //because async
+            if (typeof action.payload.list === 'undefined') {
+                return previousState;
+            } else {
+                return previousState = action.payload.list;
+            }
 
         default:
             return previousState;

@@ -1,8 +1,8 @@
 import {
     failAuthentication,
     invalidateToken
-} from '../shared/actionCreators';
-import { EXPIRED_AUTHENTICATION_MESSAGE } from '../../constants/uiConstants';
+} from './shared/actionCreators';
+import { EXPIRED_AUTHENTICATION_MESSAGE } from '../constants/uiConstants';
 
 export const performAuthorizedRequest = async (dispatch, requestAction) => {
     try {

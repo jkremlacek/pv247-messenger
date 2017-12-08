@@ -17,7 +17,7 @@ import {
     convertToServerDetails
 } from '../../utils/api/conversions/profileDetails';
 import { DETAILS_FORM_NAME } from '../../constants/formNames';
-import { performAuthorizedRequest } from './performAuthorizedRequest';
+import { performAuthorizedRequest } from '../performAuthorizedRequest';
 import {
     FAILED_UPDATE_DETAILS_MESSAGE,
     MILISECONDS_TO_AUTO_DISMISS_ERROR,

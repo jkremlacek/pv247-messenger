@@ -5,7 +5,7 @@ import {
 import {
     dismissError,
 } from '../shared/actionCreators';
-import { performAuthorizedRequest } from './performAuthorizedRequest';
+import { performAuthorizedRequest } from '../performAuthorizedRequest';
 import { fetchFileUpload } from '../../utils/api/fetchFileUpload';
 import { uploadUserDetails } from './uploadUserDetails';
 import { fetchUserAvatar } from './fetchUserAvatar';
