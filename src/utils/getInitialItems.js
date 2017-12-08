@@ -53,7 +53,11 @@ const firstMessageItem = {
 
 const secondMessageItem = {
     id: secondMessageId,
-    messsageText: 'this is first channel, second message',
+    messsageText: 'this is first channel, second message, with extremely long text content: ' +
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed neque tellus. Curabitur et ultrices dui, ' +
+    'cursus luctus mauris. Sed quis scelerisque ex, non sollicitudin dolor. Vivamus placerat ipsum ut diam mattis, ' +
+    'at dignissim arcu fringilla. Nunc venenatis sapien vel urna dapibus, nec egestas ipsum facilisis. ' +
+    'Aenean finibus nunc nec accumsan tristique. Pellentesque gravida nec sem nec pellentesque. ',
     channelId: firstId,
     ownerId: 'dad@family.com'
 };

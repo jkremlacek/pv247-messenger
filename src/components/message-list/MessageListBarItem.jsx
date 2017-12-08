@@ -5,6 +5,9 @@ import {
     TitlePane,
     Title,
     ActionPane,
+    Action,
+    Message,
+    ActionPlaceholder,
     DangerAction
 } from './MessageListBarItem.styles';
 import { ItemPane} from './MessageListItem.styles';
@@ -25,19 +28,39 @@ function MessageListBarItem(props) {
     return (
         <ItemPane disabled="true">
             <ItemBar disabled="true">
-                <TitlePane>
-                    <Title>{props.item.messsageText}</Title>
-                </TitlePane>
+                <ActionPane>
+                    <ActionPlaceholder/>
+                </ActionPane>
                 <TitlePane>
                     <Title>{props.item.ownerId}</Title>
                 </TitlePane>
-                {(props.isOwner ?
-                    <ActionPane>
-                        <DangerAction onClick={() => props.onDelete()}>
-                            <i className="glyphicon glyphicon-remove" aria-hidden="true" />
-                        </DangerAction>
-                    </ActionPane> : <ActionPane/>
-                )}
+                <ActionPane>
+                    <Action onClick={() => props.onPlus()}>
+                        <i className="glyphicon glyphicon-plus" aria-hidden="true"/>
+                    </Action>
+                </ActionPane>
+                <ActionPane>
+                    <Action onClick={() => props.onMinus()}>
+                        <i className="glyphicon glyphicon-minus" aria-hidden="true"/>
+                    </Action>
+                </ActionPane>
+                <ActionPane>
+                    {(props.isOwner ?
+                    <DangerAction onClick={() => props.onDelete()}>
+                        <i className="glyphicon glyphicon-remove" aria-hidden="true" />
+                    </DangerAction> : <ActionPlaceholder/>
+                    )}
+                </ActionPane>
+            </ItemBar>
+            <ItemBar disabled="true">
+                <ActionPane>
+                    <ActionPlaceholder/>
+                </ActionPane>
+                <TitlePane>
+                    <Message>
+                        {props.item.messsageText}
+                    </Message>
+                </TitlePane>
             </ItemBar>
         </ItemPane>
     );
@@ -48,9 +71,12 @@ MessageListBarItem.propTypes = {
         id: PropTypes.string.isRequired,
         messsageText: PropTypes.string.isRequired,
         channelId: PropTypes.string.isRequired,
-        ownerId: PropTypes.string.isRequired
+        ownerId: PropTypes.string.isRequired,
+        score: PropTypes.number.isRequired
     }).isRequired,
     onDelete: PropTypes.func.isRequired,
+    onPlus: PropTypes.func.isRequired,
+    onMinus: PropTypes.func.isRequired,
     isOwner: PropTypes.bool.isRequired
 };
 

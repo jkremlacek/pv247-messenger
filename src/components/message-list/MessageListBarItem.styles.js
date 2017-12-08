@@ -9,7 +9,7 @@ export const ItemBar = styled.div`
 `;
 
 export const TitlePane = styled.div`
-    cursor: ${props => props.disabled ? 'default' : 'pointer'};
+    cursor: 'default';
     padding: 0 4px;
     display: flex;
     align-items: center;
@@ -21,15 +21,24 @@ export const Title = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    word-wrap: break-word
+`;
+
+export const Message = styled.div`
+    padding-top: 8px;
+    padding-bottom: 16px;
 `;
 
 export const ActionPane = styled.div`;
     display: flex;
 `;
 
-export const Action = styled.div`
+export const ActionPlaceholder = styled.div`
     width: 40px;
     height: 40px;
+`;
+
+export const Action = ActionPlaceholder.extend`
     display: flex;
     align-items: center;
     justify-content: space-around;
