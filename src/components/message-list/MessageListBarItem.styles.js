@@ -15,6 +15,13 @@ export const TitlePane = styled.div`
     align-items: center;
     width: 100%;
     min-width: 0;
+    justify-content: flex-start;
+`;
+
+export const CenterPane = styled.div`
+    display: flex;
+    width: 100%;
+    justify-constent: space-around;
 `;
 
 export const Title = styled.div`
@@ -76,4 +83,14 @@ export const DangerAction = Action.extend`
         background-color: ${props => props.disabled ? 'inherit' : '#d9534f'};
         color: ${props => props.disabled ? '#DDD' : '#FFF'};
     }
+`;
+
+export const AvatarImage = styled.div`
+    background-image: url('${props => props.src || 'assets/no-profile.png'}'); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center; 
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
 `;

@@ -6,8 +6,10 @@ import {
     TitlePane,
     Title,
     ActionPane,
+    CenterPane,
     VoteAction,
     Message,
+    AvatarImage,
     ActionPlaceholder,
     DangerAction
 } from './MessageListBarItem.styles';
@@ -29,15 +31,19 @@ function MessageListBarItem(props) {
     return (
         <ItemPane disabled="true">
             <ItemBar disabled="true">
-                <ActionPane>
-                    <ActionPlaceholder/>
-                </ActionPane>
                 <TitlePane>
-                    <Title>{props.ownerAvatar}</Title>
+                    <div className="col-xs-8 " key="picture">
+                        <AvatarImage
+                            className="img-rounded"
+                            alt="Profile picture"
+                            src={props.owner.avatar}
+                        />
+                    </div>
                 </TitlePane>
                 <TitlePane>
-                    <Title>{props.item.ownerId}</Title>
+                    <Title>{props.owner.name}</Title>
                 </TitlePane>
+                <CenterPane/>
                 <ActionPane>
                     {
                         props.item.score > 0 ?
@@ -93,7 +99,7 @@ MessageListBarItem.propTypes = {
     onMinus: PropTypes.func.isRequired,
     isOwner: PropTypes.bool.isRequired,
     userId: PropTypes.string.isRequired,
-    ownerAvatar: PropTypes.string.isRequired
+    owner: PropTypes.string.isRequired
 };
 
 export { MessageListBarItem };
