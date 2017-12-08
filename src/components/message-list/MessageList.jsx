@@ -14,7 +14,8 @@ class MessageList extends React.PureComponent {
         editedMessageItemId: PropTypes.string,
         isDragging: PropTypes.bool,
         onCreateNewClick: PropTypes.func.isRequired,
-        ownerId: PropTypes.string
+        ownerId: PropTypes.string,
+        usersList: PropTypes.instanceOf(Immutable.List).isRequired
     };
 
     render() {
@@ -26,7 +27,7 @@ class MessageList extends React.PureComponent {
                         exit: 0
                     }}
                     classNames="bar-item">
-                    <MessageListBarItem key={item.id} item={item} isOwner={this.props.ownerId===item.ownerId} userId={this.props.ownerId}/>
+                    <MessageListBarItem key={item.id} item={item} isOwner={this.props.ownerId===item.ownerId} userId={this.props.ownerId} ownerAvatar={(this.props.usersList.filter(x => x.id === item.ownerId).get(0)).avatar}/>
                 </CSSTransition>
             )
         );

@@ -33,6 +33,9 @@ function MessageListBarItem(props) {
                     <ActionPlaceholder/>
                 </ActionPane>
                 <TitlePane>
+                    <Title>{props.ownerAvatar}</Title>
+                </TitlePane>
+                <TitlePane>
                     <Title>{props.item.ownerId}</Title>
                 </TitlePane>
                 <ActionPane>
@@ -89,7 +92,8 @@ MessageListBarItem.propTypes = {
     onPlus: PropTypes.func.isRequired,
     onMinus: PropTypes.func.isRequired,
     isOwner: PropTypes.bool.isRequired,
-    userId: PropTypes.string.isRequired
+    userId: PropTypes.string.isRequired,
+    ownerAvatar: PropTypes.string.isRequired
 };
 
 export { MessageListBarItem };
