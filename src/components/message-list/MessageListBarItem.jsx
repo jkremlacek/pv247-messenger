@@ -58,7 +58,7 @@ function MessageListBarItem(props) {
                 </ActionPane>
                 <TitlePane>
                     <Message>
-                        {props.item.messsageText}
+                        {props.item.messageText}
                     </Message>
                 </TitlePane>
             </ItemBar>
@@ -69,7 +69,7 @@ function MessageListBarItem(props) {
 MessageListBarItem.propTypes = {
     item: PropTypes.shape({
         id: PropTypes.string.isRequired,
-        messsageText: PropTypes.string.isRequired,
+        messageText: PropTypes.string.isRequired,
         channelId: PropTypes.string.isRequired,
         ownerId: PropTypes.string.isRequired,
         score: PropTypes.number.isRequired

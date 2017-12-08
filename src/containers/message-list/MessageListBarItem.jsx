@@ -50,7 +50,7 @@ const DndMessageListBarItem = DragSource('MessageItem', messageItemDragSourceSpe
 DndMessageListBarItem.propTypes = {
     item: PropTypes.shape({
         id: PropTypes.string.isRequired,
-        messsageText: PropTypes.string.isRequired,
+        messageText: PropTypes.string.isRequired,
         channelId: PropTypes.string.isRequired,
         ownerId: PropTypes.string.isRequired
     }).isRequired,

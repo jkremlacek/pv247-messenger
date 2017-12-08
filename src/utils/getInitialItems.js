@@ -46,14 +46,14 @@ const thirdMessageId = uuid;
 
 const firstMessageItem = {
     id: firstMessageId,
-    messsageText: 'this is first channel, first message',
+    messageText: 'this is first channel, first message',
     channelId: firstId,
     ownerId: 'undefined@null.zero'
 };
 
 const secondMessageItem = {
     id: secondMessageId,
-    messsageText: 'this is first channel, second message, with extremely long text content: ' +
+    messageText: 'this is first channel, second message, with extremely long text content: ' +
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed neque tellus. Curabitur et ultrices dui, ' +
     'cursus luctus mauris. Sed quis scelerisque ex, non sollicitudin dolor. Vivamus placerat ipsum ut diam mattis, ' +
     'at dignissim arcu fringilla. Nunc venenatis sapien vel urna dapibus, nec egestas ipsum facilisis. ' +
@@ -64,7 +64,7 @@ const secondMessageItem = {
 
 const thirdMessageItem = {
     id: thirdMessageId,
-    messsageText: 'this is second channel, first message',
+    messageText: 'this is second channel, first message',
     channelId: secondId,
     ownerId: 'undefined@null.zero'
 };
