@@ -1,5 +1,6 @@
 import { uuid } from '../../utils/uuidGenerator';
 import * as actionTypes from '../../constants/actionTypes';
+import {FAILED_FETCH_MESSAGE_LIST_MESSAGE} from '../../constants/uiConstants';
 
 export const createNewItem = (newItem) => ({
     type: actionTypes.MESSAGE_LIST_ITEM_CREATE,
@@ -40,6 +41,31 @@ export const downVoteItem = (item, id) => ({
     payload: {
         item,
         id
+    }
+});
+
+export const updateLocalMessageList = (list) => ({
+    type: actionTypes.MESSAGE_LIST_UPDATE,
+    payload: {
+        list,
+    }
+});
+
+export const startProcessingMessageList = () => ({
+    type: actionTypes.MESSAGE_LIST_UPDATE_START,
+    payload: {}
+});
+
+export const endProcessingMessageList = () => ({
+    type: actionTypes.MESSAGE_LIST_UPDATE_END,
+    payload: {}
+});
+
+export const failFetchingMessageList = (message, error) => ({
+    type: FAILED_FETCH_MESSAGE_LIST_MESSAGE,
+    payload: {
+        message: message,
+        error: error,
     }
 });
 

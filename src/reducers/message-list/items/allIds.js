@@ -3,6 +3,7 @@ import {
     MESSAGE_LIST_ITEM_CREATE,
     MESSAGE_LIST_ITEM_DELETE,
     MESSAGE_LIST_ITEM_MOVE,
+    MESSAGE_LIST_UPDATE,
 } from '../../../constants/actionTypes';
 
 export const allIds = (previousState = Immutable.List(), action) => {
@@ -23,6 +24,9 @@ export const allIds = (previousState = Immutable.List(), action) => {
 
             return previousState.delete(moveItemIndex).insert(destinationItemIndex, action.payload.moveItemId);
         }
+
+        case MESSAGE_LIST_UPDATE:
+            return previousState = Immutable.List(Array.from(action.payload.list.keys()));
 
         default:
             return previousState;

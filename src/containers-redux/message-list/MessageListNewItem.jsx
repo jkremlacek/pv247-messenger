@@ -3,9 +3,9 @@ import {uuid} from '../../utils/uuidGenerator';
 import * as Immutable from 'immutable';
 import { MessageListEditedItem } from '../../containers/message-list/MessageListEditedItem.jsx';
 import {
-    createNewItem,
     closeCreateNewForm,
 } from '../../actions/message-list/actionCreators';
+import {addRemoteMessage, fetchRemoteMessageList} from '../../actions/message-list/api';
 
 const mapStateToProps = (state, ownProps) => ({
     submitButtonText: 'Send',
@@ -21,7 +21,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onSubmit: (item) => dispatch(createNewItem(item)),
+    onSubmit: (item) => dispatch(addRemoteMessage(item))
+        .then(() => dispatch(fetchRemoteMessageList())),
     onCancel: () => dispatch(closeCreateNewForm()),
 });
 

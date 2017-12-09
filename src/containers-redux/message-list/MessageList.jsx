@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
     editedMessageItemId: state.messageApp.editedMessageItemId,
     createNewFormVisible: state.messageApp.isCreateNewFormOpen,
     selectedChannelItemId: state.channelApp.selectedChannelItemId,
-    ownerId: state.profile.details.email,
+    ownerId: state.shared.token.email,
     usersList: state.users.list
 });
 

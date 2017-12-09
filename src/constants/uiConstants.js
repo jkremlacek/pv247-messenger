@@ -7,6 +7,7 @@ export const FAILED_UPDATE_DETAILS_MESSAGE = 'Updating details went grievously w
 export const FAILED_UPDATE_AVATAR_MESSAGE = 'New avatar got helplessly lost…';
 export const EXPIRED_AUTHENTICATION_MESSAGE = 'Your authentication unhappily expired…';
 
-export const FAILED_FETCH_CHANNEL_LIST_MESSAGE = 'Sorry, could not retreive channels…';
+export const FAILED_FETCH_CHANNEL_LIST_MESSAGE = 'Sorry, could not retrieve channels…';
+export const FAILED_FETCH_MESSAGE_LIST_MESSAGE = 'Sorry, could not retrieve messages…';
 
 

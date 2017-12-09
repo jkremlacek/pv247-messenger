@@ -5,6 +5,7 @@ import {
     startEditingItem
 } from '../../actions/channel-list/actionCreators';
 import {fetchRemoteChannelList, removeRemoteChannel} from '../../actions/channel-list/api';
+import {fetchRemoteMessageList} from '../../actions/message-list/api';
 
 const mapStateToProps = (state) => ({
     expandDisabled: !!state.editedChannelItemId
@@ -14,10 +15,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     onDelete: () => dispatch(removeRemoteChannel(ownProps.item))
         .then(() => dispatch(fetchRemoteChannelList())),
     onExpand: () => dispatch(startEditingItem(ownProps.item.id)),
-    onPick: () => dispatch(selectItem(ownProps.item.id))
+    onPick: () => dispatch(fetchRemoteMessageList(ownProps.item.id))
+        .then(() => dispatch(selectItem(ownProps.item.id)))
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);
 const connectedComponent = enhancer(ChannelListBarItem);
 
 export { connectedComponent as ChannelListBarItem };
+

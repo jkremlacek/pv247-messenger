@@ -22,7 +22,7 @@ export const byId = (previousState = Immutable.Map(), action) => {
             return previousState.delete(action.payload.id);
 
         case CHANNEL_LIST_UPDATE:
-            return previousState = action.payload.list;
+            return previousState.merge(action.payload.list);
 
         default:
             return previousState;

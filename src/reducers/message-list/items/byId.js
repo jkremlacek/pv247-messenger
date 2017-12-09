@@ -5,6 +5,7 @@ import {
     MESSAGE_LIST_ITEM_UPDATE,
     MESSAGE_LIST_ITEM_UPVOTE,
     MESSAGE_LIST_ITEM_DOWNVOTE,
+    MESSAGE_LIST_UPDATE,
 } from '../../../constants/actionTypes';
 
 export const byId = (previousState = Immutable.Map(), action) => {
@@ -47,6 +48,9 @@ export const byId = (previousState = Immutable.Map(), action) => {
             return previousState.mergeIn([action.payload.item.id], { ...action.payload.item });
         case MESSAGE_LIST_ITEM_DELETE:
             return previousState.delete(action.payload.id);
+
+        case MESSAGE_LIST_UPDATE:
+            return previousState = action.payload.list;
 
         default:
             return previousState;

@@ -15,7 +15,7 @@ class MessageList extends React.PureComponent {
         isDragging: PropTypes.bool,
         onCreateNewClick: PropTypes.func.isRequired,
         ownerId: PropTypes.string,
-        usersList: PropTypes.instanceOf(Immutable.List).isRequired
+        usersList: PropTypes.instanceOf(Immutable.List).isRequired,
     };
 
     render() {
