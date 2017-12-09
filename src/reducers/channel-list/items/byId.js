@@ -22,12 +22,7 @@ export const byId = (previousState = Immutable.Map(), action) => {
             return previousState.delete(action.payload.id);
 
         case CHANNEL_LIST_UPDATE:
-            //because async
-            if (typeof action.payload.list === 'undefined') {
-                return previousState;
-            } else {
-                return previousState = action.payload.list;
-            }
+            return previousState = action.payload.list;
 
         default:
             return previousState;

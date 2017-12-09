@@ -4,10 +4,14 @@ import { LoginForm } from '../../components/login/LoginForm.jsx';
 import { authenticateUser } from '../../actions/shared/authenticateUser';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onSubmit: () => dispatch(authenticateUser(ownProps.from))
+    onSubmit: (item) => dispatch(authenticateUser(ownProps.from, item)),
 });
 
-const enhancer = connect(undefined, mapDispatchToProps);
+const mapStateToProps = () => ({
+    email: 'undefined@null.zero'
+});
+
+const enhancer = connect(mapStateToProps, mapDispatchToProps);
 const connectedComponent = enhancer(LoginForm);
 
 connectedComponent.propTypes = {

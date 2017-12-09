@@ -6,6 +6,7 @@ import {
     createNewItem,
     closeCreateNewForm,
 } from '../../actions/channel-list/actionCreators';
+import {addRemoteChannel} from '../../actions/channel-list/api';
 
 const mapStateToProps = (state, ownProps) => ({
     submitButtonText: 'Create',
@@ -19,7 +20,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onSubmit: (item) => dispatch(createNewItem(item)),
+    onSubmit: (item) => dispatch(createNewItem(item)).then(dispatch(addRemoteChannel(item))),
     onCancel: () => dispatch(closeCreateNewForm()),
 });
 

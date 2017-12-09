@@ -25,12 +25,7 @@ export const allIds = (previousState = Immutable.List(), action) => {
         }
 
         case CHANNEL_LIST_UPDATE:
-            //because async
-            if (typeof action.payload.list === 'undefined') {
-                return previousState;
-            } else {
-                return previousState = Immutable.List(Array.from(action.payload.list.keys()));
-            }
+            return previousState = Immutable.List(Array.from(action.payload.list.keys()));
 
         default:
             return previousState;

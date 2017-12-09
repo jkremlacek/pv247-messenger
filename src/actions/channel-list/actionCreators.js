@@ -50,18 +50,21 @@ export const inviteUser = (item, id) => ({
     }
 });
 
-export const updateChannelList = (list) => ({
+export const updateLocalChannelList = (list) => ({
     type: actionTypes.CHANNEL_LIST_UPDATE,
     payload: {
         list,
     }
 });
 
-export const startFetchingChannelList = () => ({
+export const startProcessingChannelList = () => ({
     type: actionTypes.CHANNEL_LIST_UPDATE_START,
-    payload: {
+    payload: {}
+});
 
-    }
+export const endProcessingChannelList = () => ({
+    type: actionTypes.CHANNEL_LIST_UPDATE_END,
+    payload: {}
 });
 
 export const failFetchingChannelList = (message, error) => ({

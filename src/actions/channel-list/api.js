@@ -1,14 +1,22 @@
 import {createApiChannelListUri} from '../../constants/api';
 import {performAuthorizedRequest} from '../performAuthorizedRequest';
 
-import {convertFromServerDetails as getChannelList} from '../../utils/api/conversions/channelList';
-import {failFetchingChannelList, startFetchingChannelList, updateChannelList} from './actionCreators';
+import {convertFromServerDetails as getChannelList, convertToServerDetails as transformChannel} from '../../utils/api/conversions/channelList';
+import {
+    endProcessingChannelList, failFetchingChannelList, startProcessingChannelList,
+    updateLocalChannelList
+} from './actionCreators';
 import {FAILED_FETCH_CHANNEL_LIST_MESSAGE} from '../../constants/uiConstants';
 import {fetchReceive} from '../../utils/api/fetchReceive';
+import {fetchPatch} from '../../utils/api/fetchPatch';
 
-export const fetchChannelList = () =>
+const PATCH_OPERATION_ADD = 'add';
+const PATCH_OPERATION_REPLACE = 'replace';
+const PATCH_OPERATION_REMOVE = 'remove';
+
+export const fetchRemoteChannelList = () =>
     async (dispatch, getState) => {
-        dispatch(startFetchingChannelList());
+        dispatch(startProcessingChannelList());
 
         const authToken = getState().shared.token;
         const requestUri = createApiChannelListUri();
@@ -18,7 +26,70 @@ export const fetchChannelList = () =>
                 const response = await fetchReceive(requestUri, authToken);
                 const transformedResponse = getChannelList(response);
 
-                dispatch(updateChannelList(transformedResponse));
+                dispatch(updateLocalChannelList(transformedResponse));
+            });
+        }
+        catch (error) {
+            return dispatch(failFetchingChannelList(FAILED_FETCH_CHANNEL_LIST_MESSAGE, error));
+        }
+    };
+
+export const updateRemoteChannel = (channel) =>
+    async (dispatch, getState) => {
+        dispatch(startProcessingChannelList());
+
+        const authToken = getState().shared.token;
+        const requestUri = createApiChannelListUri();
+
+        try {
+            return await performAuthorizedRequest(dispatch, async () => {
+
+                const body = transformChannel(channel, PATCH_OPERATION_REPLACE);
+                await fetchPatch(requestUri, authToken, body);
+
+                dispatch(endProcessingChannelList());
+            });
+        }
+        catch (error) {
+            return dispatch(failFetchingChannelList(FAILED_FETCH_CHANNEL_LIST_MESSAGE, error));
+        }
+    };
+
+export const removeRemoteChannel = (channel) =>
+    async (dispatch, getState) => {
+        dispatch(startProcessingChannelList());
+
+        const authToken = getState().shared.token;
+        const requestUri = createApiChannelListUri();
+
+        try {
+            return await performAuthorizedRequest(dispatch, async () => {
+
+                const body = transformChannel(channel, PATCH_OPERATION_REMOVE);
+                await fetchPatch(requestUri, authToken, body);
+
+                dispatch(endProcessingChannelList());
+            });
+        }
+        catch (error) {
+            return dispatch(failFetchingChannelList(FAILED_FETCH_CHANNEL_LIST_MESSAGE, error));
+        }
+    };
+
+export const addRemoteChannel = (channel) =>
+    async (dispatch, getState) => {
+        dispatch(startProcessingChannelList());
+
+        const authToken = getState().shared.token;
+        const requestUri = createApiChannelListUri();
+
+        try {
+            return await performAuthorizedRequest(dispatch, async () => {
+
+                const body = transformChannel(channel, PATCH_OPERATION_ADD);
+                await fetchPatch(requestUri, authToken, body);
+
+                dispatch(endProcessingChannelList());
             });
         }
         catch (error) {

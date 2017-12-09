@@ -5,10 +5,11 @@ import {
     updateItem,
     inviteUser
 } from '../../actions/channel-list/actionCreators';
+import {updateRemoteChannel} from '../../actions/channel-list/api';
 
 const mapDispatchToProps = (dispatch) => ({
-    onSubmit: (item) => dispatch(updateItem(item)),
-    inviteOnSubmit: (item, invitee) => dispatch(inviteUser(item, invitee)),
+    onSubmit: (item) => dispatch(updateItem(item)).then(dispatch(updateRemoteChannel(item))),
+    inviteOnSubmit: (item, invitee) => dispatch(inviteUser(item, invitee)).then(dispatch(updateRemoteChannel(item))),
     onCancel: () => dispatch(cancelEditingItem()),
 });
 

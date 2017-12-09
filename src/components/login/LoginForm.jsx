@@ -5,6 +5,7 @@ import { uuid } from '../../utils/uuidGenerator';
 class LoginForm extends React.PureComponent {
     static propTypes = {
         onSubmit: PropTypes.func.isRequired,
+        email: PropTypes.string.isRequired,
     };
 
     componentWillMount() {
@@ -32,13 +33,12 @@ class LoginForm extends React.PureComponent {
                             className="form-control"
                             type="email"
                             id={loginId}
-                            placeholder="undefined@null.zero"
-                            readOnly
+                            defaultValue={this.props.email}
                         />
                     </div>
                 </div>
                 <button
-                    type="button"
+                    type="submit"
                     className="btn btn-success btn-lg"
                     onClick={this.props.onSubmit}
                 >
