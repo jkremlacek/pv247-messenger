@@ -8,7 +8,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
 const mapStateToProps = () => ({
-    email: 'undefined@null.zero'
+    email: ''
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);

@@ -5,6 +5,7 @@ import { openCreateNewForm } from '../../actions/channel-list/actionCreators';
 import {
     fetchRemoteChannelList,
 } from '../../actions/channel-list/api';
+import {fetchRemoteUsersList} from '../../actions/users/api';
 
 const getListOfItems = (channelItems) => channelItems.allIds.map(id => channelItems.byId.get(id)).toList();
 const getListOfItemsMemoized = memoizee(getListOfItems);
@@ -15,12 +16,13 @@ const mapStateToProps = (state) => ({
     selectedChannelItemId: state.channelApp.selectedChannelItemId,
     createNewFormVisible: state.channelApp.isCreateNewFormOpen,
     ownerId: state.shared.token.email,
-    usersList: state.users.list
+    usersList: state.users,
 });
 
 const mapDispatchToProps = (dispatch) => ({
     onCreateNewClick: () => dispatch(openCreateNewForm()),
     fetchList: () => dispatch(fetchRemoteChannelList()),
+    fetchUsers: () => dispatch(fetchRemoteUsersList()),
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);

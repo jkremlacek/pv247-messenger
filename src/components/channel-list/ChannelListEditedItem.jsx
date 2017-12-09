@@ -98,7 +98,7 @@ export class ChannelListEditedItem extends React.PureComponent {
                                     {
                                         this.props.usersList.filter(item => this.props.item.members.includes(item.id) != true).map(
                                             (listValue) => <option key={listValue.id}
-                                                                   value={listValue.id}>{listValue.name}</option>
+                                                                   value={listValue.id}>{listValue.fullName}</option>
                                         )
                                     }
                                 </select>

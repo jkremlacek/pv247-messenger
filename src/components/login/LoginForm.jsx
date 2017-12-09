@@ -53,6 +53,7 @@ class LoginForm extends React.PureComponent {
                 <button
                     type="submit"
                     className="btn btn-success btn-lg"
+                    disabled={this.props.email === this.state.inputValue}
                     onClick={() => this.props.onSubmit(this.state.inputValue)}
                 >
                     Come on in

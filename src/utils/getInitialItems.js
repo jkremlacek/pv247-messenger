@@ -93,20 +93,20 @@ export const getInitialMessageItems = () => {
 
 const firstUser = {
     id: 'undefined@null.zero',
-    name: 'MasterAdmin',
-    avatar: 'https://image.flaticon.com/teams/slug/freepik.jpg'
+    fullName: 'MasterAdmin',
+    avatarId: 'https://image.flaticon.com/teams/slug/freepik.jpg'
 };
 
 const secondUser = {
     id: 'dad@family.com',
-    name: 'Dad',
-    avatar: 'https://png.icons8.com/?id=37607&size=280'
+    fullName: 'Dad',
+    avatarId: 'https://png.icons8.com/?id=37607&size=280'
 };
 
 const thirdUser = {
     id: 'mum@family.com',
-    name: 'Mother',
-    avatar: 'https://maxcdn.icons8.com/Share/icon/Food//cherry1600.png'
+    fullName: 'Mother',
+    avatarId: 'https://maxcdn.icons8.com/Share/icon/Food//cherry1600.png'
 };
 
 const allUsers = Immutable.List([firstUser, secondUser, thirdUser]);

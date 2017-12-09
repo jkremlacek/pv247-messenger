@@ -10,4 +10,6 @@ export const EXPIRED_AUTHENTICATION_MESSAGE = 'Your authentication unhappily exp
 export const FAILED_FETCH_CHANNEL_LIST_MESSAGE = 'Sorry, could not retrieve channels…';
 export const FAILED_FETCH_MESSAGE_LIST_MESSAGE = 'Sorry, could not retrieve messages…';
 
+export const FAILED_FETCH_USER_LIST_MESSAGE = 'Sorry, could not retrieve users…';
+
 

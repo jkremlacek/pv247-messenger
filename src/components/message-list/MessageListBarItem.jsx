@@ -36,12 +36,12 @@ function MessageListBarItem(props) {
                         <AvatarImage
                             className="img-rounded"
                             alt="Profile picture"
-                            src={props.owner.avatar}
+                            src={props.owner.avatarId}
                         />
                     </div>
                 </TitlePane>
                 <TitlePane>
-                    <Title>{props.owner.name}</Title>
+                    <Title>{props.owner.fullName}</Title>
                 </TitlePane>
                 <CenterPane/>
                 <ActionPane>

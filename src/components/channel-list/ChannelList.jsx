@@ -19,10 +19,12 @@ class ChannelList extends React.PureComponent {
         ownerId: PropTypes.string,
         usersList: PropTypes.instanceOf(Immutable.List).isRequired,
         fetchList: PropTypes.func.isRequired,
+        fetchUsers: PropTypes.func.isRequired,
     };
 
     componentWillMount() {
         this.props.fetchList();
+        this.props.fetchUsers();
     }
 
     render() {

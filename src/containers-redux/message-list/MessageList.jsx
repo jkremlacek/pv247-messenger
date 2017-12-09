@@ -12,7 +12,7 @@ const mapStateToProps = (state) => ({
     createNewFormVisible: state.messageApp.isCreateNewFormOpen,
     selectedChannelItemId: state.channelApp.selectedChannelItemId,
     ownerId: state.shared.token.email,
-    usersList: state.users.list
+    usersList: state.users,
 });
 
 const mapDispatchToProps = (dispatch) => ({
