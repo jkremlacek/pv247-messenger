@@ -5,15 +5,21 @@ import {
     upVoteItem,
     downVoteItem
 } from '../../actions/message-list/actionCreators';
+import {fetchRemoteMessageList, removeRemoteMessage, updateRemoteMessage} from '../../actions/message-list/api';
 
 const mapStateToProps = (state) => ({
     expandDisabled: !! state.editedMessageItemId
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onDelete: () => dispatch(deleteItem(ownProps.item.id)),
-    onPlus: (userId) => dispatch(upVoteItem(ownProps.item, userId)),
+    onDelete: () => dispatch(deleteItem(ownProps.item.id))
+        .then(dispatch(removeRemoteMessage(ownProps.item))),
+    onPlus: (userId) => dispatch(upVoteItem(ownProps.item, userId))
+        .then(dispatch(updateRemoteMessage(ownProps.item)))
+        .then(dispatch(fetchRemoteMessageList(ownProps.item.channelId))),
     onMinus: (userId) => dispatch(downVoteItem(ownProps.item, userId))
+        .then(dispatch(updateRemoteMessage(ownProps.item)))
+        .then(dispatch(fetchRemoteMessageList(ownProps.item.channelId))),
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);

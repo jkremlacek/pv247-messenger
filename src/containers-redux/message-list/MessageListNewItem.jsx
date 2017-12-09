@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     onSubmit: (item) => dispatch(addRemoteMessage(item))
-        .then(() => dispatch(fetchRemoteMessageList())),
+        .then(() => dispatch(fetchRemoteMessageList(item.channelId))),
     onCancel: () => dispatch(closeCreateNewForm()),
 });
 
