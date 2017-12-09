@@ -2,7 +2,7 @@
 
 Prepared users in app:
 
-undefined@null.zero
-dad@family.com
-mum@family.com
-stranger@yahoo.com
+- undefined@null.zero
+- dad@family.com
+- mum@family.com
+- stranger@yahoo.com
