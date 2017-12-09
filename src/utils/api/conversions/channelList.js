@@ -19,7 +19,7 @@ export const convertFromServerDetails = (serverDetails) => {
             newData[o.id] = {
                 id: o.id,
                 title: o.name,
-                members: cd.members,
+                members: Immutable.Set(cd.members),
                 ownerId: cd.ownerId,
             };
         }
@@ -28,12 +28,12 @@ export const convertFromServerDetails = (serverDetails) => {
     return Immutable.Map(newData);
 };
 
-export const convertToServerDetails = (details, operation) => JSON.stringify([{
-    path: '/channels/' + details.id,
-    op: operation,
+export const convertToServerDetails = (details, operation, id) => [{
     value: {
         id: details.id,
         name: details.title,
         customData: JSON.stringify(details),
-    }
-}]);
+    },
+    path: '/channels/' + id ,
+    op: operation
+}];

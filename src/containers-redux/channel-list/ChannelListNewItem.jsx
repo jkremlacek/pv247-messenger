@@ -3,10 +3,10 @@ import {uuid} from '../../utils/uuidGenerator';
 import Immutable from 'immutable';
 import { ChannelListEditedItem } from '../../containers/channel-list/ChannelListEditedItem.jsx';
 import {
-    createNewItem,
+
     closeCreateNewForm,
 } from '../../actions/channel-list/actionCreators';
-import {addRemoteChannel} from '../../actions/channel-list/api';
+import {addRemoteChannel, fetchRemoteChannelList} from '../../actions/channel-list/api';
 
 const mapStateToProps = (state, ownProps) => ({
     submitButtonText: 'Create',
@@ -20,7 +20,9 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onSubmit: (item) => dispatch(createNewItem(item)).then(dispatch(addRemoteChannel(item))),
+    onSubmit: (item) => dispatch(addRemoteChannel(item))
+            .then(() => dispatch(fetchRemoteChannelList()))
+    ,
     onCancel: () => dispatch(closeCreateNewForm()),
 });
 

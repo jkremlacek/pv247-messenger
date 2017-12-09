@@ -7,3 +7,4 @@ export const createApiUserUri = (userEmail) => `${API_URI}/${API_APP_ID}/user/${
 export const createApiFilerUri = (fileId) => `${API_URI}//file/${fileId}/download-link`;
 
 export const createApiChannelListUri = () => `${API_URI}/app/${API_APP_ID}`;
+export const createApiChannelItemUri = (channelId) => `${API_URI}/app/${API_APP_ID}/${channelId}`;

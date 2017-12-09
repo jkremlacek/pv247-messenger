@@ -41,10 +41,12 @@ export const updateRemoteChannel = (channel) =>
         const authToken = getState().shared.token.value;
         const requestUri = createApiChannelListUri();
 
+        alert(requestUri);
+
         try {
             return await performAuthorizedRequest(dispatch, async () => {
 
-                const body = transformChannel(channel, PATCH_OPERATION_REPLACE);
+                const body = transformChannel(channel, PATCH_OPERATION_REPLACE, channel.id);
                 await fetchPatch(requestUri, authToken, body);
 
                 dispatch(endProcessingChannelList());
@@ -65,7 +67,7 @@ export const removeRemoteChannel = (channel) =>
         try {
             return await performAuthorizedRequest(dispatch, async () => {
 
-                const body = transformChannel(channel, PATCH_OPERATION_REMOVE);
+                const body = transformChannel(channel, PATCH_OPERATION_REMOVE, channel.id);
                 await fetchPatch(requestUri, authToken, body);
 
                 dispatch(endProcessingChannelList());
@@ -86,7 +88,7 @@ export const addRemoteChannel = (channel) =>
         try {
             return await performAuthorizedRequest(dispatch, async () => {
 
-                const body = transformChannel(channel, PATCH_OPERATION_ADD);
+                const body = transformChannel(channel, PATCH_OPERATION_ADD, '-');
                 await fetchPatch(requestUri, authToken, body);
 
                 dispatch(endProcessingChannelList());
