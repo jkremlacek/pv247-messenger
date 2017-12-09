@@ -18,7 +18,7 @@ export const uploadUserAvatar = (file) =>
     async (dispatch, getState) => {
         dispatch(startUploadingProfileAvatar());
 
-        const authToken = getState().shared.token;
+        const authToken = getState().shared.token.value;
 
         try {
             return await performAuthorizedRequest(dispatch, async () => {

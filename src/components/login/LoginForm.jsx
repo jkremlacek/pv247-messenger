@@ -8,8 +8,19 @@ class LoginForm extends React.PureComponent {
         email: PropTypes.string.isRequired,
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            inputValue: '',
+        };
+    }
+
     componentWillMount() {
         this.setState(() => ({ componentId: uuid() }));
+    }
+
+    updateInputValue(evt) {
+        this.setState({inputValue:evt.target.value});
     }
 
     render() {
@@ -34,13 +45,15 @@ class LoginForm extends React.PureComponent {
                             type="email"
                             id={loginId}
                             defaultValue={this.props.email}
+                            autoFocus='true'
+                            onChange={evt => this.updateInputValue(evt)}
                         />
                     </div>
                 </div>
                 <button
                     type="submit"
                     className="btn btn-success btn-lg"
-                    onClick={this.props.onSubmit}
+                    onClick={() => this.props.onSubmit(this.state.inputValue)}
                 >
                     Come on in
                 </button>

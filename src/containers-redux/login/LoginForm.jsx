@@ -4,7 +4,7 @@ import { LoginForm } from '../../components/login/LoginForm.jsx';
 import { authenticateUser } from '../../actions/shared/authenticateUser';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onSubmit: (item) => dispatch(authenticateUser(ownProps.from, item)),
+    onSubmit: (value) => dispatch(authenticateUser(ownProps.from, value)),
 });
 
 const mapStateToProps = () => ({

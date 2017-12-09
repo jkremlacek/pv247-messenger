@@ -29,12 +29,11 @@ export const convertFromServerDetails = (serverDetails) => {
 };
 
 export const convertToServerDetails = (details, operation) => JSON.stringify([{
-    path: details.id,
+    path: '/channels/' + details.id,
     op: operation,
     value: {
         id: details.id,
         name: details.title,
         customData: JSON.stringify(details),
-
     }
 }]);

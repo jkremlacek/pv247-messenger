@@ -27,7 +27,7 @@ const LoginLayout = ({ from }) => {
                         <h1>PV247</h1>
                         <p>2017</p>
                         <div>
-                            <LoginForm from={originalLocation} />
+                            <LoginForm from={originalLocation} email=''/>
                         </div>
                     </Loader>
                 </div>

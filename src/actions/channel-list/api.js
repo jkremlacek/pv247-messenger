@@ -18,7 +18,7 @@ export const fetchRemoteChannelList = () =>
     async (dispatch, getState) => {
         dispatch(startProcessingChannelList());
 
-        const authToken = getState().shared.token;
+        const authToken = getState().shared.token.value;
         const requestUri = createApiChannelListUri();
 
         try {
@@ -38,7 +38,7 @@ export const updateRemoteChannel = (channel) =>
     async (dispatch, getState) => {
         dispatch(startProcessingChannelList());
 
-        const authToken = getState().shared.token;
+        const authToken = getState().shared.token.value;
         const requestUri = createApiChannelListUri();
 
         try {
@@ -59,7 +59,7 @@ export const removeRemoteChannel = (channel) =>
     async (dispatch, getState) => {
         dispatch(startProcessingChannelList());
 
-        const authToken = getState().shared.token;
+        const authToken = getState().shared.token.value;
         const requestUri = createApiChannelListUri();
 
         try {
@@ -80,7 +80,7 @@ export const addRemoteChannel = (channel) =>
     async (dispatch, getState) => {
         dispatch(startProcessingChannelList());
 
-        const authToken = getState().shared.token;
+        const authToken = getState().shared.token.value;
         const requestUri = createApiChannelListUri();
 
         try {

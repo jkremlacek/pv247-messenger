@@ -18,31 +18,9 @@ export const authenticateUser = (destinationLocation, userEmail) =>
     (dispatch) => {
         dispatch(startAuthentication());
 
-        // Butchering email value from json, antipattern, should be done differently
-        // Note: cache should not be re-used by repeated calls to JSON.stringify.
-        var cache = [];
-        var json = JSON.stringify(userEmail, function(key, value) {
-            if (typeof value === 'object' && value !== null) {
-                if (cache.indexOf(value) !== -1) {
-                    // Circular reference found, discard key
-                    return;
-                }
-                // Store value in our collection
-                cache.push(value);
-            } return value;
-        });
-        cache = null; // Enable garbage collection
-
-        json = json.substring(json.indexOf('email'), json.length);
-        json = json.substring(json.indexOf(':') + 2, json.indexOf('}')-1);
-
-        userEmail = json;
-
-        alert(JSON.stringify(userEmail));
-
         return fetchAuthToken(userEmail)
             .then((token) => {
-                dispatch(receiveValidToken(token));
+                dispatch(receiveValidToken(token, userEmail));
                 dispatch(push(destinationLocation));
 
                 localStorage.setItem(keys.SHARED_TOKEN, JSON.stringify(token));

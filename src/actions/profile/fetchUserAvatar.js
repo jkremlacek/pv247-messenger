@@ -12,7 +12,7 @@ export const fetchUserAvatar = (avatarId) =>
     async (dispatch, getState) => {
         dispatch(startFetchingProfileAvatar());
 
-        const authToken = getState().shared.token;
+        const authToken = getState().shared.token.value;
         const requestUri = createApiFilerUri(avatarId);
 
         try {

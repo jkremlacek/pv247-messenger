@@ -7,7 +7,7 @@ import {
 export const token = (prevState = null, action) => {
     switch (action.type) {
         case SHARED_RECEIVE_TOKEN:
-            return action.payload.token;
+            return {value:action.payload.token, email:action.payload.userEmail};
 
         case SHARED_AUTHENTICATION_FAILED:
         case SHARED_INVALIDATE_TOKEN:
