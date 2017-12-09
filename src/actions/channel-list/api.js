@@ -41,8 +41,6 @@ export const updateRemoteChannel = (channel) =>
         const authToken = getState().shared.token.value;
         const requestUri = createApiChannelListUri();
 
-        alert(requestUri);
-
         try {
             return await performAuthorizedRequest(dispatch, async () => {
 
