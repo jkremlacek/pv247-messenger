@@ -28,6 +28,17 @@ ConnectDnd.prototypes = {
 };
 
 function MessageListBarItem(props) {
+    var createdDate = new Date(props.item.createdAt);
+    var now = new Date();
+
+    var createdText;
+
+    if (createdDate.toDateString() === now.toDateString()) {
+        createdText = createdDate.getHours() + ':' + createdDate.getMinutes();
+    } else {
+        createdText = createdDate.getDay() + '.' + createdDate.getMonth();
+    }
+
     return (
         <ItemPane disabled="true">
             <ItemBar disabled="true">
@@ -41,15 +52,21 @@ function MessageListBarItem(props) {
                     </div>
                 </TitlePane>
                 <TitlePane>
-                    <Title>{props.owner.fullName}</Title>
+                    <Title><b>{props.owner.fullName}</b></Title>
+                </TitlePane>
+                <TitlePane>
+                    <Title>{createdText}</Title>
                 </TitlePane>
                 <CenterPane/>
                 <ActionPane>
                     {
                         props.item.score > 0 ?
-                            <ActionPlaceholder><b>+{props.item.score}</b></ActionPlaceholder>
+                            <ActionPlaceholder active={true} positive={true}><b>+{props.item.score}</b></ActionPlaceholder>
                             :
-                            <ActionPlaceholder><b>{props.item.score}</b></ActionPlaceholder>
+                            props.item.score < 0 ?
+                                <ActionPlaceholder active={true} positive={false}><b>{props.item.score}</b></ActionPlaceholder>
+                                :
+                                <ActionPlaceholder><b>{props.item.score}</b></ActionPlaceholder>
                     }
                 </ActionPane>
                 <ActionPane>
@@ -92,7 +109,9 @@ MessageListBarItem.propTypes = {
         ownerId: PropTypes.string.isRequired,
         score: PropTypes.number.isRequired,
         votedPlus: PropTypes.instanceOf(Immutable.Set).isRequired,
-        votedMinus: PropTypes.instanceOf(Immutable.Set).isRequired
+        votedMinus: PropTypes.instanceOf(Immutable.Set).isRequired,
+        createdAt: PropTypes.string.isRequired,
+        updatedAt: PropTypes.string.isRequired,
     }).isRequired,
     onDelete: PropTypes.func.isRequired,
     onPlus: PropTypes.func.isRequired,

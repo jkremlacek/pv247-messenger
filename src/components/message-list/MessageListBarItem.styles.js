@@ -46,11 +46,19 @@ export const ActionPlaceholder = styled.div`
     width: 40px;
     height: 40px;
     justify-content: space-around;
+    
+    color: ${
+    props => props.active ? (
+            props.positive ?
+                '#3cd959'
+                : '#d9534f')
+        : 'inherit'
+    };
 `;
 
 export const Action = ActionPlaceholder.extend`
     cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
-    color: ${props => props.disabled ? '#DDD' : '#777'};
+    
     
     &:hover {
         background-color: ${props => props.disabled ? 'inherit' : '#eee'};
@@ -59,13 +67,7 @@ export const Action = ActionPlaceholder.extend`
 `;
 
 export const VoteAction = Action.extend`
-    color: ${
-                props => props.active ? (
-                    props.positive ? 
-                        '#3cd959'
-                        : '#d9534f')
-                    : 'inherit'
-            };
+    
     &:hover {
         background-color: ${props => props.disabled ? 'inherit' : '#eee'};
         color: ${
