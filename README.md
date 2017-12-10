@@ -6,3 +6,5 @@ Prepared users in app:
 - dad@family.com
 - mum@family.com
 - stranger@yahoo.com
+- genius@yahoo.com
+- nerd@yahoo.com
