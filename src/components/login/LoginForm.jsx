@@ -5,6 +5,7 @@ import { uuid } from '../../utils/uuidGenerator';
 class LoginForm extends React.PureComponent {
     static propTypes = {
         onSubmit: PropTypes.func.isRequired,
+        onCreate: PropTypes.func.isRequired,
         email: PropTypes.string.isRequired,
     };
 
@@ -21,6 +22,12 @@ class LoginForm extends React.PureComponent {
 
     updateInputValue(evt) {
         this.setState({inputValue:evt.target.value});
+    }
+
+    createUserWithCheck(value) {
+        if (confirm("Are you sure? (back-end does not allow user removal)") == true) {
+            this.props.onCreate(value);
+        }
     }
 
     render() {
@@ -57,6 +64,15 @@ class LoginForm extends React.PureComponent {
                     onClick={() => this.props.onSubmit(this.state.inputValue)}
                 >
                     Come on in
+                </button>
+                <br/><br/>
+                <button
+                    type="submit"
+                    className="btn btn-success btn-lg"
+                    disabled={this.props.email === this.state.inputValue}
+                    onClick={() => this.createUserWithCheck(this.state.inputValue)}
+                >
+                    Create new user
                 </button>
             </form>
         );

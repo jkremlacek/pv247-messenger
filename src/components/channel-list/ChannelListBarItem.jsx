@@ -27,7 +27,7 @@ ConnectDnd.prototypes = {
 function ChannelListBarItem(props) {
     return (
         <ItemPane>
-            <ItemBar disabled={props.expandDisabled || false === props.isOwner} selected={props.isSelected}>
+            <ItemBar disabled={false === props.isOwner || props.expandDisabled } selected={props.isSelected}>
                 <ActionPane>
                     <Action onClick={props.onPick}>
                         <i className="glyphicon glyphicon-menu-right" aria-hidden="true" />
@@ -43,7 +43,7 @@ function ChannelListBarItem(props) {
                         <ActionPlaceholder/>
                     </ActionPane>
                 )}
-                <TitlePane disabled={props.expandDisabled} onClick={props.expandDisabled ? null : props.onExpand}>
+                <TitlePane disabled={props.expandDisabled} onClick={props.expandDisabled || props.isOwner === false ? props.onPick : props.onExpand}>
                     <Title>{props.item.title}</Title>
                 </TitlePane>
                 {(props.isOwner === true ?
