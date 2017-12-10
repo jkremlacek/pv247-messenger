@@ -36,7 +36,7 @@ function MessageListBarItem(props) {
     if (createdDate.toDateString() === now.toDateString()) {
         createdText = createdDate.getHours() + ':' + createdDate.getMinutes();
     } else {
-        createdText = createdDate.getDay() + '.' + createdDate.getMonth();
+        createdText = createdDate.getDay() + '.' + createdDate.getMonth() + '.';
     }
 
     return (
@@ -54,10 +54,10 @@ function MessageListBarItem(props) {
                 <TitlePane>
                     <Title><b>{props.owner.fullName}</b></Title>
                 </TitlePane>
-                <TitlePane>
-                    <Title>{createdText}</Title>
-                </TitlePane>
                 <CenterPane/>
+                <ActionPane>
+                    <ActionPlaceholder>{createdText}</ActionPlaceholder>
+                </ActionPane>
                 <ActionPane>
                     {
                         props.item.score > 0 ?

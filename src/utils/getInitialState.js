@@ -15,7 +15,6 @@ export const getInitialState = () => ({
     shared: {
         token: getPersistedToken()
     },
-    users: {
-        ...getInitialUsers()
-    }
+    users: getInitialUsers()
+
 });
