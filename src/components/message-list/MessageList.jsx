@@ -18,8 +18,18 @@ class MessageList extends React.PureComponent {
         usersList: PropTypes.instanceOf(Immutable.List).isRequired,
     };
 
+    compareMessageItems(a, b) {
+        if(a.createdAt < b.createdAt) {
+            return -1;
+        } else if (a.createdAt > b.createdAt) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     render() {
-        let itemElements = this.props.list.filter(item => item.channelId === this.props.selectedChannelItemId).map(item =>
+        let itemElements = this.props.list.filter(item => item.channelId === this.props.selectedChannelItemId).sort(this.compareMessageItems).map(item =>
             (
                 <CSSTransition key={`bar-${item.id}`}
                     timeout={{
