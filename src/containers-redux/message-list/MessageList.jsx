@@ -2,6 +2,7 @@ import memoizee from 'memoizee';
 import { connect } from 'react-redux';
 import { MessageList } from '../../components/message-list/MessageList.jsx';
 import { openCreateNewForm } from '../../actions/message-list/actionCreators';
+import {fetchRemoteMessageList} from '../../actions/message-list/api';
 
 const getListOfItems = (messageItems) => messageItems.allIds.map(id => messageItems.byId.get(id)).toList();
 const getListOfItemsMemoized = memoizee(getListOfItems);
@@ -17,6 +18,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     onCreateNewClick: () => dispatch(openCreateNewForm()),
+    reloadList: (channelId) => dispatch(fetchRemoteMessageList(channelId)),
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);

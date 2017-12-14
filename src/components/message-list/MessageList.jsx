@@ -16,6 +16,7 @@ class MessageList extends React.PureComponent {
         onCreateNewClick: PropTypes.func.isRequired,
         ownerId: PropTypes.string,
         usersList: PropTypes.instanceOf(Immutable.List).isRequired,
+        reloadList: PropTypes.func.isRequired,
     };
 
     compareMessageItems(a, b) {
@@ -26,6 +27,14 @@ class MessageList extends React.PureComponent {
         } else {
             return 0;
         }
+    }
+
+    componentDidMount() {
+        this.interval = setInterval(() => this.props.reloadList(this.props.selectedChannelItemId), 10000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     render() {
