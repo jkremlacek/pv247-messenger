@@ -3,7 +3,7 @@ import {convertFromServerDetails as getUsersList} from '../../utils/api/conversi
 import {FAILED_FETCH_USER_LIST_MESSAGE} from '../../constants/uiConstants';
 import {performAuthorizedRequest} from '../performAuthorizedRequest';
 import {fetchReceive} from '../../utils/api/fetchReceive';
-import {failFetchingUserList, loadUsersList, startProcessingUserList} from './actionCreators';
+import {endProcessingUserList, failFetchingUserList, loadUsersList, startProcessingUserList} from './actionCreators';
 //import * as Immutable from 'immutable';
 
 export const fetchRemoteUsersList = () =>
@@ -27,7 +27,7 @@ export const fetchRemoteUsersList = () =>
                 }
 
                 dispatch(loadUsersList(transformedResponse));
-            });
+            }).then(()=> dispatch(endProcessingUserList()));
         }
         catch (error) {
             return dispatch(failFetchingUserList(FAILED_FETCH_USER_LIST_MESSAGE, error));

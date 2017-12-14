@@ -12,8 +12,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onDelete: () => dispatch(deleteItem(ownProps.item.id))
-        .then(dispatch(removeRemoteMessage(ownProps.item))),
+    onDelete: () => {
+        dispatch(deleteItem(ownProps.item.id));
+        dispatch(removeRemoteMessage(ownProps.item));},
     onPlus: (userId) => dispatch(upVoteItem(ownProps.item, userId))
         .then(dispatch(updateRemoteMessage(ownProps.item)))
         .then(dispatch(fetchRemoteMessageList(ownProps.item.channelId))),

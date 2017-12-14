@@ -9,12 +9,12 @@ export const loadUsersList = (list) => ({
 });
 
 export const startProcessingUserList = () => ({
-    type: actionTypes.MESSAGE_LIST_UPDATE_START,
+    type: actionTypes.MESSAGE_LIST_UPDATE_STARTED,
     payload: {}
 });
 
 export const endProcessingUserList = () => ({
-    type: actionTypes.MESSAGE_LIST_UPDATE_END,
+    type: actionTypes.MESSAGE_LIST_UPDATE_FINISHED,
     payload: {}
 });
 

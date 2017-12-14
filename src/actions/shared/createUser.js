@@ -8,7 +8,7 @@ import {
     MILISECONDS_TO_AUTO_DISMISS_ERROR,
     FAILED_AUTHENTICATION_MESSAGE,
 } from '../../constants/uiConstants';
-import {fetchPost} from "../../utils/api/fetchPost";
+import {fetchPost} from '../../utils/api/fetchPost';
 import {createApiUserListUri} from '../../constants/api';
 import {performAuthorizedRequest} from '../performAuthorizedRequest';
 import {authenticateUser} from './authenticateUser';
@@ -22,7 +22,10 @@ export const createUser = (destinationLocation, userEmail) =>
         try {
             return await performAuthorizedRequest(dispatch, async () => {
 
-                const body = {email:userEmail,customData:'{"fullName":"New user","phone":"011-235813213460","avatarId":"ed7104e1-bfb9-455d-bd75-bd86deccd38b"}'};
+                const body = {
+                    email:userEmail,
+                    customData:'{"fullName":"New user","phone":"011-235813213460","avatarId":"ed7104e1-bfb9-455d-bd75-bd86deccd38b"}'
+                };
                 await fetchPost(requestUri, null, body);
 
                 //dispatch(endCreatingUser());

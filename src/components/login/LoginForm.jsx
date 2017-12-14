@@ -25,7 +25,7 @@ class LoginForm extends React.PureComponent {
     }
 
     createUserWithCheck(value) {
-        if (confirm("Are you sure? (back-end does not allow user removal)") == true) {
+        if (confirm('Are you sure? (back-end does not allow user removal)') == true) {
             this.props.onCreate(value);
         }
     }

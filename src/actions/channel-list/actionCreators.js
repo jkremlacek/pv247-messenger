@@ -58,12 +58,12 @@ export const updateLocalChannelList = (list) => ({
 });
 
 export const startProcessingChannelList = () => ({
-    type: actionTypes.CHANNEL_LIST_UPDATE_START,
+    type: actionTypes.CHANNEL_LIST_UPDATE_STARTED,
     payload: {}
 });
 
 export const endProcessingChannelList = () => ({
-    type: actionTypes.CHANNEL_LIST_UPDATE_END,
+    type: actionTypes.CHANNEL_LIST_UPDATE_FINISHED,
     payload: {}
 });
 

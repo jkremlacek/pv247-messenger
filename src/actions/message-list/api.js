@@ -25,7 +25,7 @@ export const fetchRemoteMessageList = (channelId) =>
                 const transformedResponse = getMessageList(response);
 
                 dispatch(updateLocalMessageList(transformedResponse));
-            });
+            }).then(()=> dispatch(endProcessingMessageList()));
         }
         catch (error) {
             return dispatch(failFetchingMessageList(FAILED_FETCH_MESSAGE_LIST_MESSAGE, error));
@@ -44,9 +44,7 @@ export const updateRemoteMessage = (message) =>
 
                 const body = transformMessage(message);
                 await fetchRequest(requestUri, authToken, body);
-
-                dispatch(endProcessingMessageList());
-            });
+            }).then(()=> dispatch(endProcessingMessageList()));
         }
         catch (error) {
             return dispatch(failFetchingMessageList(FAILED_FETCH_MESSAGE_LIST_MESSAGE, error));
@@ -64,9 +62,7 @@ export const removeRemoteMessage = (message) =>
             return await performAuthorizedRequest(dispatch, async () => {
 
                 await fetchDelete(requestUri, authToken);
-
-                dispatch(endProcessingMessageList());
-            });
+            }).then(()=> dispatch(endProcessingMessageList()));
         }
         catch (error) {
             return dispatch(failFetchingMessageList(FAILED_FETCH_MESSAGE_LIST_MESSAGE, error));
@@ -85,9 +81,7 @@ export const addRemoteMessage = (message) =>
 
                 const body = transformMessage(message);
                 await fetchPost(requestUri, authToken, body);
-
-                dispatch(endProcessingMessageList());
-            });
+            }).then(()=> dispatch(endProcessingMessageList()));
         }
         catch (error) {
             return dispatch(failFetchingMessageList(FAILED_FETCH_MESSAGE_LIST_MESSAGE, error));

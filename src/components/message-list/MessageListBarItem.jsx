@@ -6,7 +6,6 @@ import {
     TitlePane,
     Title,
     ActionPane,
-    CenterPane,
     VoteAction,
     Message,
     AvatarImage,
@@ -34,9 +33,9 @@ function MessageListBarItem(props) {
     var createdText;
 
     if (createdDate.toDateString() === now.toDateString()) {
-        createdText = createdDate.getHours() + ':' + createdDate.getMinutes();
+        createdText = createdDate.getHours() + ':' + (createdDate.getMinutes() > 9 ? createdDate.getMinutes() : ('0' + createdDate.getMinutes()));
     } else {
-        createdText = createdDate.getDay() + '.' + createdDate.getMonth() + '.';
+        createdText = createdDate.toDateString();
     }
 
     return (
@@ -54,10 +53,9 @@ function MessageListBarItem(props) {
                 <TitlePane>
                     <Title><b>{props.owner.fullName}</b></Title>
                 </TitlePane>
-                <CenterPane/>
-                <ActionPane>
-                    <ActionPlaceholder>{createdText}</ActionPlaceholder>
-                </ActionPane>
+                <TitlePane>
+                    <Title>{createdText}</Title>
+                </TitlePane>
                 <ActionPane>
                     {
                         props.item.score > 0 ?

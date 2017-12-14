@@ -13,5 +13,5 @@ export const saveItems = () =>
             localStorage.setItem(keys.ITEMS_CHANNEL_BY_ID, JSON.stringify(getState().messageApp.channelItems.byId.toJS()));
 
             dispatch(savingFinished());
-        }, 1000);
+        }, 0);
     };

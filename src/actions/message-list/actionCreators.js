@@ -52,12 +52,12 @@ export const updateLocalMessageList = (list) => ({
 });
 
 export const startProcessingMessageList = () => ({
-    type: actionTypes.MESSAGE_LIST_UPDATE_START,
+    type: actionTypes.MESSAGE_LIST_UPDATE_STARTED,
     payload: {}
 });
 
 export const endProcessingMessageList = () => ({
-    type: actionTypes.MESSAGE_LIST_UPDATE_END,
+    type: actionTypes.MESSAGE_LIST_UPDATE_FINISHED,
     payload: {}
 });
 

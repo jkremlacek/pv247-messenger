@@ -27,7 +27,7 @@ export const fetchRemoteChannelList = () =>
                 const transformedResponse = getChannelList(response);
 
                 dispatch(updateLocalChannelList(transformedResponse));
-            });
+            }).then(()=> dispatch(endProcessingChannelList()));
         }
         catch (error) {
             return dispatch(failFetchingChannelList(FAILED_FETCH_CHANNEL_LIST_MESSAGE, error));
@@ -46,9 +46,7 @@ export const updateRemoteChannel = (channel) =>
 
                 const body = transformChannel(channel, PATCH_OPERATION_REPLACE, channel.id);
                 await fetchPatch(requestUri, authToken, body);
-
-                dispatch(endProcessingChannelList());
-            });
+            }).then(()=> dispatch(endProcessingChannelList()));
         }
         catch (error) {
             return dispatch(failFetchingChannelList(FAILED_FETCH_CHANNEL_LIST_MESSAGE, error));
@@ -67,9 +65,7 @@ export const removeRemoteChannel = (channel) =>
 
                 const body = transformChannel(channel, PATCH_OPERATION_REMOVE, channel.id);
                 await fetchPatch(requestUri, authToken, body);
-
-                dispatch(endProcessingChannelList());
-            });
+            }).then(()=> dispatch(endProcessingChannelList()));
         }
         catch (error) {
             return dispatch(failFetchingChannelList(FAILED_FETCH_CHANNEL_LIST_MESSAGE, error));
@@ -88,9 +84,7 @@ export const addRemoteChannel = (channel) =>
 
                 const body = transformChannel(channel, PATCH_OPERATION_ADD, '-');
                 await fetchPatch(requestUri, authToken, body);
-
-                dispatch(endProcessingChannelList());
-            });
+            }).then(()=> dispatch(endProcessingChannelList()));
         }
         catch (error) {
             return dispatch(failFetchingChannelList(FAILED_FETCH_CHANNEL_LIST_MESSAGE, error));

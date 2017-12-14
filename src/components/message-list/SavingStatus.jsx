@@ -3,12 +3,11 @@ import React from 'react';
 import { StatusPane } from './SavingStatus.styles.js';
 import { SavingSpinner } from '../shared/SavingSpinner.jsx';
 
-//TODO: saving status probably should be unified or split into each components
 export class SavingStatus extends React.PureComponent {
 
     static propTypes = {
         watchedEntity: PropTypes.object.isRequired,
-        isSaving: PropTypes.bool.isRequired,
+        isSaving: PropTypes.number.isRequired,
         save: PropTypes.func.isRequired,
     };
 
@@ -19,8 +18,8 @@ export class SavingStatus extends React.PureComponent {
     }
 
     render() {
-        const text = this.props.isSaving ? 'Saving' : 'Saved';
-        const icon = this.props.isSaving
+        const text = this.props.isSaving > 0 ? 'Saving' : 'Saved';
+        const icon = this.props.isSaving > 0
             ? <SavingSpinner />
             : <i className="glyphicon glyphicon-check" alt="Saved"/>;
 
