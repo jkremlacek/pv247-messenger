@@ -13,15 +13,8 @@ export const editedMessageItemId = (prevState = null, action) => {
         case MESSAGE_LIST_ITEM_CANCEL_EDITING:
         case MESSAGE_LIST_ITEM_UPDATE:
         case MESSAGE_LIST_ITEM_DELETE:
-
-            //TODO: fix unused vars, next lines is a workaround to calm compiler
-            if (prevState != null) {
-                return null;
-            }
-            //END
-
             return null;
         default:
-            return null;
+            return prevState;
     }
 };

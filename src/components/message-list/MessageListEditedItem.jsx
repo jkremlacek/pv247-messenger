@@ -19,10 +19,7 @@ export class MessageListEditedItem extends React.PureComponent {
     };
 
     componentDidMount(){
-        const textLength = this.titleInput.value.length;
-
         this.titleInput.focus();
-        this.titleInput.setSelectionRange(textLength, textLength);
     }
 
     _handleEscKey = (e) => {
@@ -42,7 +39,7 @@ export class MessageListEditedItem extends React.PureComponent {
                                 type="text"
                                 className="form-control"
                                 id="title"
-                                value={this.props.item.messageText}
+                                value={typeof this.titleInput !== 'undefined' ? this.titleInput.value : ''}
                                 onChange={this.props.onTitleChange}
                                 ref={(input) => { this.titleInput = input; }}
                                 onKeyDown={this._handleEscKey}
@@ -52,7 +49,7 @@ export class MessageListEditedItem extends React.PureComponent {
                             <button
                                 type="submit"
                                 className="btn btn-primary btn-sm"
-                                disabled={this.props.submitDisabled}
+                                disabled={this.props.submitDisabled && typeof this.titleInput === 'undefined'}
                                 onClick={this.props.onSubmit}
                             >
                                 {this.props.submitButtonText}
