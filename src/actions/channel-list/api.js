@@ -14,7 +14,7 @@ const PATCH_OPERATION_ADD = 'add';
 const PATCH_OPERATION_REPLACE = 'replace';
 const PATCH_OPERATION_REMOVE = 'remove';
 
-export const fetchRemoteChannelList = () =>
+export const fetchRemoteChannelList = (fetchFunc = fetchReceive) =>
     async (dispatch, getState) => {
         dispatch(startProcessingChannelList());
 
@@ -23,7 +23,7 @@ export const fetchRemoteChannelList = () =>
 
         try {
             return await performAuthorizedRequest(dispatch, async () => {
-                const response = await fetchReceive(requestUri, authToken);
+                const response = await fetchFunc(requestUri, authToken);
                 const transformedResponse = getChannelList(response);
 
                 dispatch(updateLocalChannelList(transformedResponse));
@@ -34,7 +34,7 @@ export const fetchRemoteChannelList = () =>
         }
     };
 
-export const updateRemoteChannel = (channel) =>
+export const updateRemoteChannel = (channel, fetchFunc = fetchPatch) =>
     async (dispatch, getState) => {
         dispatch(startProcessingChannelList());
 
@@ -45,7 +45,7 @@ export const updateRemoteChannel = (channel) =>
             return await performAuthorizedRequest(dispatch, async () => {
 
                 const body = transformChannel(channel, PATCH_OPERATION_REPLACE, channel.id);
-                await fetchPatch(requestUri, authToken, body);
+                await fetchFunc(requestUri, authToken, body);
             }).then(()=> dispatch(endProcessingChannelList()));
         }
         catch (error) {
@@ -53,7 +53,7 @@ export const updateRemoteChannel = (channel) =>
         }
     };
 
-export const removeRemoteChannel = (channel) =>
+export const removeRemoteChannel = (channel, fetchFunc = fetchPatch) =>
     async (dispatch, getState) => {
         dispatch(startProcessingChannelList());
 
@@ -64,7 +64,7 @@ export const removeRemoteChannel = (channel) =>
             return await performAuthorizedRequest(dispatch, async () => {
 
                 const body = transformChannel(channel, PATCH_OPERATION_REMOVE, channel.id);
-                await fetchPatch(requestUri, authToken, body);
+                await fetchFunc(requestUri, authToken, body);
             }).then(()=> dispatch(endProcessingChannelList()));
         }
         catch (error) {
@@ -72,7 +72,7 @@ export const removeRemoteChannel = (channel) =>
         }
     };
 
-export const addRemoteChannel = (channel) =>
+export const addRemoteChannel = (channel, fetchFunc = fetchPatch) =>
     async (dispatch, getState) => {
         dispatch(startProcessingChannelList());
 
@@ -83,7 +83,7 @@ export const addRemoteChannel = (channel) =>
             return await performAuthorizedRequest(dispatch, async () => {
 
                 const body = transformChannel(channel, PATCH_OPERATION_ADD, '-');
-                await fetchPatch(requestUri, authToken, body);
+                await fetchFunc(requestUri, authToken, body);
             }).then(()=> dispatch(endProcessingChannelList()));
         }
         catch (error) {

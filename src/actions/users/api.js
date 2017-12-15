@@ -6,7 +6,7 @@ import {fetchReceive} from '../../utils/api/fetchReceive';
 import {endProcessingUserList, failFetchingUserList, loadUsersList, startProcessingUserList} from './actionCreators';
 //import * as Immutable from 'immutable';
 
-export const fetchRemoteUsersList = () =>
+export const fetchRemoteUsersList = (fetchFunc = fetchReceive) =>
     async (dispatch, getState) => {
         dispatch(startProcessingUserList());
 
@@ -15,7 +15,7 @@ export const fetchRemoteUsersList = () =>
 
         try {
             return await performAuthorizedRequest(dispatch, async () => {
-                const response = await fetchReceive(requestUri, authToken);
+                const response = await fetchFunc(requestUri, authToken);
                 var transformedResponse = getUsersList(response);
 
                 //combine user list with avatar links
@@ -23,7 +23,7 @@ export const fetchRemoteUsersList = () =>
                     var user = transformedResponse.get(i);
                     var requestAvatarUri = createApiFilerUri(user.avatarId);
 
-                    transformedResponse.get(i).avatarId = await fetchReceive(requestAvatarUri, authToken);
+                    transformedResponse.get(i).avatarId = await fetchFunc(requestAvatarUri, authToken);
                 }
 
                 dispatch(loadUsersList(transformedResponse));

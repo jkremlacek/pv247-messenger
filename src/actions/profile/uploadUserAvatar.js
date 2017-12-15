@@ -14,7 +14,7 @@ import {
     MILISECONDS_TO_AUTO_DISMISS_ERROR
 } from '../../constants/uiConstants';
 
-export const uploadUserAvatar = (file) =>
+export const uploadUserAvatar = (file, fetchFunc = fetchFileUpload) =>
     async (dispatch, getState) => {
         dispatch(startUploadingProfileAvatar());
 
@@ -26,7 +26,7 @@ export const uploadUserAvatar = (file) =>
                     throw new Error('Avatar type is not supported or the system could not load the file.');
                 }
 
-                const uploadResult = await fetchFileUpload(authToken, file);
+                const uploadResult = await fetchFunc(authToken, file);
                 if(!uploadResult || !uploadResult[0] || !uploadResult[0].id){
                     throw new Error('Avatar uploaded to the server, however, server did not store the file.');
                 }

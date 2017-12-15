@@ -22,7 +22,7 @@ import {
     MILISECONDS_TO_AUTO_DISMISS_ERROR,
 } from '../../constants/uiConstants';
 
-export const uploadUserDetails = (details) =>
+export const uploadUserDetails = (details, fetchFunc = fetchRequest) =>
     async (dispatch, getState) => {
         dispatch(startSubmit(DETAILS_FORM_NAME));
 
@@ -32,7 +32,7 @@ export const uploadUserDetails = (details) =>
 
         try {
             await performAuthorizedRequest(dispatch, async () => {
-                const receivedServerDetails = await fetchRequest(requestUri, authToken, serverDetails);
+                const receivedServerDetails = await fetchFunc(requestUri, authToken, serverDetails);
                 const updatedDetails = convertFromServerDetails(receivedServerDetails);
                 return dispatch(updateProfileDetails(updatedDetails));
             });

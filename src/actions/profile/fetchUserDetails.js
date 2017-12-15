@@ -19,7 +19,7 @@ import {
 } from '../../constants/uiConstants';
 import { fetchUserAvatar } from './fetchUserAvatar';
 
-export const fetchUserDetails = () =>
+export const fetchUserDetails = (fetchFunc = fetchReceive) =>
     (dispatch, getState) => {
         dispatch(startFetchingProfileDetails());
         dispatch(startFetchingProfileAvatar());
@@ -27,7 +27,7 @@ export const fetchUserDetails = () =>
         const authToken = getState().shared.token.value;
         const requestUri = createApiUserUri(getState().shared.token.email);
 
-        return fetchReceive(requestUri, authToken)
+        return fetchFunc(requestUri, authToken)
             .then((serverDetails) => dispatch(updateProfileDetails(convertFromServerDetails(serverDetails))))
             .then(({ payload: {details: { avatarId } = {} } = {} }) => avatarId && dispatch(fetchUserAvatar(avatarId)))
             .catch((error) => {

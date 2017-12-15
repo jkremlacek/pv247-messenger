@@ -13,9 +13,8 @@ import {createApiUserListUri} from '../../constants/api';
 import {performAuthorizedRequest} from '../performAuthorizedRequest';
 import {authenticateUser} from './authenticateUser';
 
-export const createUser = (destinationLocation, userEmail) =>
+export const createUser = (destinationLocation, userEmail, fetchFunc = fetchPost) =>
     async (dispatch) => {
-        //dispatch(startCreatingUser());
 
         const requestUri = createApiUserListUri();
 
@@ -26,9 +25,8 @@ export const createUser = (destinationLocation, userEmail) =>
                     email:userEmail,
                     customData:'{"fullName":"New user","phone":"011-235813213460","avatarId":"ed7104e1-bfb9-455d-bd75-bd86deccd38b"}'
                 };
-                await fetchPost(requestUri, null, body);
+                await fetchFunc(requestUri, null, body);
 
-                //dispatch(endCreatingUser());
                 dispatch(authenticateUser(destinationLocation, userEmail));
             });
         }

@@ -12,7 +12,7 @@ import {fetchPost} from '../../utils/api/fetchPost';
 import {fetchRequest} from '../../utils/api/fetchRequest';
 import {fetchDelete} from '../../utils/api/fetchDelete';
 
-export const fetchRemoteMessageList = (channelId) =>
+export const fetchRemoteMessageList = (channelId, fetchFunc = fetchReceive) =>
     async (dispatch, getState) => {
         dispatch(startProcessingMessageList());
 
@@ -21,7 +21,7 @@ export const fetchRemoteMessageList = (channelId) =>
 
         try {
             return await performAuthorizedRequest(dispatch, async () => {
-                const response = await fetchReceive(requestUri, authToken);
+                const response = await fetchFunc(requestUri, authToken);
                 const transformedResponse = getMessageList(response);
 
                 dispatch(updateLocalMessageList(transformedResponse));
@@ -32,7 +32,7 @@ export const fetchRemoteMessageList = (channelId) =>
         }
     };
 
-export const updateRemoteMessage = (message) =>
+export const updateRemoteMessage = (message, fetchFunc = fetchRequest) =>
     async (dispatch, getState) => {
         dispatch(startProcessingMessageList());
 
@@ -43,7 +43,7 @@ export const updateRemoteMessage = (message) =>
             return await performAuthorizedRequest(dispatch, async () => {
 
                 const body = transformMessage(message);
-                await fetchRequest(requestUri, authToken, body);
+                await fetchFunc(requestUri, authToken, body);
             }).then(()=> dispatch(endProcessingMessageList()));
         }
         catch (error) {
@@ -51,7 +51,7 @@ export const updateRemoteMessage = (message) =>
         }
     };
 
-export const removeRemoteMessage = (message) =>
+export const removeRemoteMessage = (message, fetchFunc = fetchDelete) =>
     async (dispatch, getState) => {
         dispatch(startProcessingMessageList());
 
@@ -61,7 +61,7 @@ export const removeRemoteMessage = (message) =>
         try {
             return await performAuthorizedRequest(dispatch, async () => {
 
-                await fetchDelete(requestUri, authToken);
+                await fetchFunc(requestUri, authToken);
             }).then(()=> dispatch(endProcessingMessageList()));
         }
         catch (error) {
@@ -69,7 +69,7 @@ export const removeRemoteMessage = (message) =>
         }
     };
 
-export const addRemoteMessage = (message) =>
+export const addRemoteMessage = (message, fetchFunc = fetchPost) =>
     async (dispatch, getState) => {
         dispatch(startProcessingMessageList());
 
@@ -80,7 +80,7 @@ export const addRemoteMessage = (message) =>
             return await performAuthorizedRequest(dispatch, async () => {
 
                 const body = transformMessage(message);
-                await fetchPost(requestUri, authToken, body);
+                await fetchFunc(requestUri, authToken, body);
             }).then(()=> dispatch(endProcessingMessageList()));
         }
         catch (error) {
