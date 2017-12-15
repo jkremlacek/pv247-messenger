@@ -14,5 +14,8 @@ cache:
 install:
   - npm build
 
+before_install:
+  - npm install --save-dev jest
+  
 before_script:
   - export CI=false
