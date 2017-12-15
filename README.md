@@ -12,8 +12,8 @@ This is a small chat-like project built on React (with Redux) for PV247 course a
 *please note that project depends on online back-end running (only during the course)*
 
 *once back-end is down you also need to run* 
-https://github.com/KenticoAcademy/PV247-API 
-*and change its address at* `/src/constants/api.js` *(*`API_URI` *+* `API_APP_ID` *(must be generated manually over backend API))*
+https://github.com/jkremlacek/PV247-API 
+*and change its address at* `/src/constants/api.js` *(*`API_URI` *+* `API_APP_ID` *(must be generated manually over backend API via HTML POST at /api/app))*
 
 ### Details
 
