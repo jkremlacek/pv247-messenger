@@ -25,3 +25,7 @@ There are several prepared users in the app *(course online back-end only)*
 - stranger@yahoo.com
 - genius@yahoo.com
 - nerd@yahoo.com
+
+### Known issues
+
+When running app repeatedly, the first attempt to login will fail and refresh the page. Second login attempt works fine.
