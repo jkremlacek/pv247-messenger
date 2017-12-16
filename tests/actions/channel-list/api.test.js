@@ -50,7 +50,7 @@ test('update channel test', async(done) => {
     const dispatch = jest.fn(action => action);
     const getState = () => ({shared: {token: {value: 'defaultToken'},}});
 
-    var requestBody = "X";
+    let requestBody = "X";
 
     const dispatchable = updateRemoteChannel(channel, (a,b,c) => {requestBody = c;});
     await dispatchable(dispatch, getState);
@@ -71,7 +71,7 @@ test('delete channel test', async(done) => {
     const dispatch = jest.fn(action => action);
     const getState = () => ({shared: {token: {value: 'defaultToken'},}});
 
-    var requestBody = "X";
+    let requestBody = "X";
 
     const dispatchable = removeRemoteChannel(channel, (a,b,c) => {requestBody = c;});
     await dispatchable(dispatch, getState);
@@ -92,7 +92,7 @@ test('add channel test', async(done) => {
     const dispatch = jest.fn(action => action);
     const getState = () => ({shared: {token: {value: 'defaultToken'},}});
 
-    var requestBody = "X";
+    let requestBody = "X";
 
     const dispatchable = addRemoteChannel(channel, (a,b,c) => {requestBody = c;});
     await dispatchable(dispatch, getState);

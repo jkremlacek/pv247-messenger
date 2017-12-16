@@ -27,10 +27,10 @@ ConnectDnd.prototypes = {
 };
 
 function MessageListBarItem(props) {
-    var createdDate = new Date(props.item.createdAt);
-    var now = new Date();
+    const createdDate = new Date(props.item.createdAt);
+    const now = new Date();
 
-    var createdText;
+    let createdText;
 
     if (createdDate.toDateString() === now.toDateString()) {
         createdText = createdDate.getHours() + ':' + (createdDate.getMinutes() > 9 ? createdDate.getMinutes() : ('0' + createdDate.getMinutes()));

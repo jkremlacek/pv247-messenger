@@ -16,12 +16,14 @@ export const fetchRemoteUsersList = (fetchFunc = fetchReceive) =>
         try {
             return await performAuthorizedRequest(dispatch, async () => {
                 const response = await fetchFunc(requestUri, authToken);
-                var transformedResponse = getUsersList(response);
+                const transformedResponse = getUsersList(response);
 
                 //combine user list with avatar links
-                for (var i = 0, l = transformedResponse.size; i < l; i++) {
-                    var user = transformedResponse.get(i);
-                    var requestAvatarUri = createApiFilerUri(user.avatarId);
+                let i = 0;
+                const l = transformedResponse.size;
+                for (; i < l; i++) {
+                    const user = transformedResponse.get(i);
+                    const requestAvatarUri = createApiFilerUri(user.avatarId);
 
                     transformedResponse.get(i).avatarId = await fetchFunc(requestAvatarUri, authToken);
                 }

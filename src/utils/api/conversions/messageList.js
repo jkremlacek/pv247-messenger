@@ -1,12 +1,14 @@
 import * as Immutable from 'immutable';
 
 export const convertFromServerDetails = (serverDetails) => {
-    var oldData = serverDetails;
-    var newData = {};
+    const oldData = serverDetails;
+    const newData = {};
 
-    for (var i = 0, l = oldData.length; i < l; i++) {
-        var o = oldData[i];
-        var cd = JSON.parse(o.customData);
+    let i = 0;
+    const l = oldData.length;
+    for (; i < l; i++) {
+        const o = oldData[i];
+        const cd = JSON.parse(o.customData);
 
         if (cd === null) {
             newData[o.id] = {
