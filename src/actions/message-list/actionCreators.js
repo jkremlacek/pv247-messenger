@@ -1,18 +1,5 @@
-import { uuid } from '../../utils/uuidGenerator';
 import * as actionTypes from '../../constants/actionTypes';
 import {FAILED_FETCH_MESSAGE_LIST_MESSAGE} from '../../constants/uiConstants';
-
-export const createNewItem = (newItem) => ({
-    type: actionTypes.MESSAGE_LIST_ITEM_CREATE,
-    payload: {
-        item: {
-            ...newItem,
-            // note that we have an explicit dependency and will refactor this
-            // to use dependency injection in following commits
-            id: uuid()
-        },
-    }
-});
 
 export const updateItem = (item) => ({
     type: actionTypes.MESSAGE_LIST_ITEM_UPDATE,

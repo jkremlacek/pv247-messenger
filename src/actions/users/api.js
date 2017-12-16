@@ -4,7 +4,6 @@ import {FAILED_FETCH_USER_LIST_MESSAGE} from '../../constants/uiConstants';
 import {performAuthorizedRequest} from '../performAuthorizedRequest';
 import {fetchReceive} from '../../utils/api/fetchReceive';
 import {endProcessingUserList, failFetchingUserList, loadUsersList, startProcessingUserList} from './actionCreators';
-//import * as Immutable from 'immutable';
 
 export const fetchRemoteUsersList = (fetchFunc = fetchReceive) =>
     async (dispatch, getState) => {
