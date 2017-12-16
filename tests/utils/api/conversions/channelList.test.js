@@ -19,7 +19,7 @@ test('to server request transformation test', async (done) => {
         "value": {"customData": "{\"id\":\"001\",\"title\":\"TestChannel\",\"ownerId\":\"test@user.com\",\"members\":[\"test@user.com\",\"test02@user.com\"]}", "id": "001", "name": "TestChannel"}
     }];
 
-    expect(serverRequest).toEqual(convertToServerDetails(channel, "replace", channel.id));
+    expect(convertToServerDetails(channel, "replace", channel.id)).toEqual(serverRequest);
 
     done();
 });
@@ -43,7 +43,7 @@ test('from server response transformation test', async (done) => {
                     "customData":"{\"id\":\"001\",\"title\":\"TestChannel\",\"members\":[\"test@user.com\", \"test02@user.com\"],\"ownerId\":\"test@user.com\"}"},
             ]};
 
-    expect(channel).toEqual((convertFromServerDetails(serverResponse)).get("001"));
+    expect((convertFromServerDetails(serverResponse)).get("001")).toEqual(channel);
 
     done();
 });

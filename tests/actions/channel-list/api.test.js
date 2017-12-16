@@ -59,11 +59,11 @@ test('update channel test', async(done) => {
     expect(dispatch).toBeCalledWith(startProcessingChannelList());
     expect(dispatch).toBeCalledWith(endProcessingChannelList());
 
-    expect([{
+    expect(requestBody).toEqual([{
                 "op": "replace",
                 "path": "/channels/001",
                 "value": {"customData": "{\"id\":\"001\",\"title\":\"TestChannel\",\"ownerId\":\"test@user.com\",\"members\":[\"test@user.com\",\"test02@user.com\"]}", "id": "001", "name": "TestChannel"}
-            }]).toEqual(requestBody);
+            }]);
 
     done();
 });
@@ -87,11 +87,11 @@ test('delete channel test', async(done) => {
     expect(dispatch).toBeCalledWith(startProcessingChannelList());
     expect(dispatch).toBeCalledWith(endProcessingChannelList());
 
-    expect([{
+    expect(requestBody).toEqual([{
         "op": "remove",
         "path": "/channels/001",
         "value": {"customData": "{\"id\":\"001\",\"title\":\"TestChannel\",\"ownerId\":\"test@user.com\",\"members\":[\"test@user.com\",\"test02@user.com\"]}", "id": "001", "name": "TestChannel"}
-    }]).toEqual(requestBody);
+    }]);
 
     done();
 });
@@ -115,11 +115,11 @@ test('add channel test', async(done) => {
     expect(dispatch).toBeCalledWith(startProcessingChannelList());
     expect(dispatch).toBeCalledWith(endProcessingChannelList());
 
-    expect([{
+    expect(requestBody).toEqual([{
         "op": "add",
         "path": "/channels/-",
         "value": {"customData": "{\"id\":\"001\",\"title\":\"TestChannel\",\"ownerId\":\"test@user.com\",\"members\":[\"test@user.com\",\"test02@user.com\"]}", "id": "001", "name": "TestChannel"}
-    }]).toEqual(requestBody);
+    }]);
 
     done();
 });
