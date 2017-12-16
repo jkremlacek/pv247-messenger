@@ -1,6 +1,5 @@
 import * as Immutable from 'immutable';
 //import { uuid } from './uuidGenerator';
-import * as keys from '../constants/localStorageKeys';
 
 // const firstId = uuid();
 // const secondId = uuid();
@@ -34,12 +33,9 @@ const allIds = Immutable.List();
 const byId = Immutable.Map();
 
 export const getInitialChannelItems = () => {
-    const storedMapJSON = localStorage.getItem(keys.ITEMS_CHANNEL_BY_ID);
-    const storedListJSON = localStorage.getItem(keys.ITEMS_CHANNEL_ALL_IDS);
-
     return {
-        allIds: storedListJSON ? Immutable.List(JSON.parse(storedListJSON)) : allIds,
-        byId: storedMapJSON ? Immutable.Map(JSON.parse(storedMapJSON)) : byId,
+        allIds: allIds,
+        byId: byId,
     };
 };
 
@@ -89,12 +85,9 @@ const byMessageIds = Immutable.Map();
 
 
 export const getInitialMessageItems = () => {
-    const storedMapJSON = localStorage.getItem(keys.ITEMS_MESSAGE_BY_ID);
-    const storedListJSON = localStorage.getItem(keys.ITEMS_MESSAGE_ALL_IDS);
-
     return {
-        allIds: storedListJSON ? Immutable.List(JSON.parse(storedListJSON)) : allMessageIds,
-        byId: storedMapJSON ? Immutable.Map(JSON.parse(storedMapJSON)) : byMessageIds,
+        allIds: allMessageIds,
+        byId: byMessageIds,
     };
 };
 
