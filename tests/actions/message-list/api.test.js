@@ -52,7 +52,7 @@ test('fetch message list test', async (done) => {
     const getState = () => ({shared: {token: {value: 'defaultToken'},}});
     const expectedValue = getMessageList(serverReturnValue);
 
-    const dispatchable = fetchRemoteMessageList(() => serverReturnValue);
+    const dispatchable = fetchRemoteMessageList("002X",() => serverReturnValue);
     await dispatchable(dispatch, getState);
 
     expect(dispatch).toBeCalledWith(startProcessingMessageList());
@@ -82,15 +82,11 @@ test('delete message test', async(done) => {
     const dispatch = jest.fn(action => action);
     const getState = () => ({shared: {token: {value: 'defaultToken'},}});
 
-    var requestBody = "X";
-
-    const dispatchable = removeRemoteMessage(message, (a,b,c) => {requestBody = c;});
+    const dispatchable = removeRemoteMessage(message, () => {});
     await dispatchable(dispatch, getState);
 
     expect(dispatch).toBeCalledWith(startProcessingMessageList());
     expect(dispatch).toBeCalledWith(endProcessingMessageList());
-
-    expect(requestBody).toEqual(serverRequest);
 
     done();
 });
@@ -101,7 +97,7 @@ test('add message test', async(done) => {
 
     var requestBody = "X";
 
-    const dispatchable = addRemoteMessage(channel, (a,b,c) => {requestBody = c;});
+    const dispatchable = addRemoteMessage(message, (a,b,c) => {requestBody = c;});
     await dispatchable(dispatch, getState);
 
     expect(dispatch).toBeCalledWith(startProcessingMessageList());
