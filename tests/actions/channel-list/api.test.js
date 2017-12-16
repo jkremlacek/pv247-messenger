@@ -13,22 +13,28 @@ import {
 import {convertFromServerDetails as getChannelList} from '../../../src/utils/api/conversions/channelList';
 import Immutable from "immutable";
 
+const serverReturnValue = {
+    "id":"cd89d662-0045-4521-8ff5-6db84451d9fb",
+    "channels":[
+        {
+            "id":"a58f2ab4-fe00-4fd8-a618-c673e6e13de0",
+            "name":"Test channel",
+            "customData":
+                "{\"id\":\"a58f2ab4-fe00-4fd8-a618-c673e6e13de0\",\"title\":\"Test channel\",\"members\":[\"undefined@null.zero\",\"dad@family.com\",\"mum@family.com\",\"nerd@yahoo.com\"],\"ownerId\":\"undefined@null.zero\"}"
+        }
+    ]
+};
+
+const channel = {
+    id: "001",
+    title: "TestChannel",
+    ownerId: "test@user.com",
+    members: Immutable.Set(["test@user.com", "test02@user.com"]),
+};
+
 test('fetch channel list test', async (done) => {
     const dispatch = jest.fn(action => action);
     const getState = () => ({shared: {token: {value: 'defaultToken'},}});
-
-    const serverReturnValue = {
-        "id":"cd89d662-0045-4521-8ff5-6db84451d9fb",
-        "channels":[
-                {
-                    "id":"a58f2ab4-fe00-4fd8-a618-c673e6e13de0",
-                    "name":"Test channel",
-                    "customData":
-                        "{\"id\":\"a58f2ab4-fe00-4fd8-a618-c673e6e13de0\",\"title\":\"Test channel\",\"members\":[\"undefined@null.zero\",\"dad@family.com\",\"mum@family.com\",\"nerd@yahoo.com\"],\"ownerId\":\"undefined@null.zero\"}"
-                }
-            ]
-    };
-
     const expectedValue = getChannelList(serverReturnValue);
 
     const dispatchable = fetchRemoteChannelList(() => serverReturnValue);
@@ -43,13 +49,6 @@ test('fetch channel list test', async (done) => {
 test('update channel test', async(done) => {
     const dispatch = jest.fn(action => action);
     const getState = () => ({shared: {token: {value: 'defaultToken'},}});
-
-    const channel = {
-        id: "001",
-        title: "TestChannel",
-        ownerId: "test@user.com",
-        members: Immutable.Set(["test@user.com", "test02@user.com"]),
-    };
 
     var requestBody = "X";
 
@@ -72,13 +71,6 @@ test('delete channel test', async(done) => {
     const dispatch = jest.fn(action => action);
     const getState = () => ({shared: {token: {value: 'defaultToken'},}});
 
-    const channel = {
-        id: "001",
-        title: "TestChannel",
-        ownerId: "test@user.com",
-        members: Immutable.Set(["test@user.com", "test02@user.com"]),
-    };
-
     var requestBody = "X";
 
     const dispatchable = removeRemoteChannel(channel, (a,b,c) => {requestBody = c;});
@@ -99,13 +91,6 @@ test('delete channel test', async(done) => {
 test('add channel test', async(done) => {
     const dispatch = jest.fn(action => action);
     const getState = () => ({shared: {token: {value: 'defaultToken'},}});
-
-    const channel = {
-        id: "001",
-        title: "TestChannel",
-        ownerId: "test@user.com",
-        members: Immutable.Set(["test@user.com", "test02@user.com"]),
-    };
 
     var requestBody = "X";
 
