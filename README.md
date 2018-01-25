@@ -9,7 +9,7 @@ This is a small chat-like project built on React (with Redux) for PV247 course a
 
 ### Note
 
-*please note that project depends on online back-end running (only during the course)*
+*please note that the project depends on back-end running (predefined endpoint works only during the course)*
 
 *once back-end is down you also need to run* 
 https://github.com/jkremlacek/PV247-API 
